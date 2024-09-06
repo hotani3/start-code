@@ -46,9 +46,9 @@ function detect() {
     echo "[$timestamp] $SCRIPT_NAME: Detected $package_title $version"
     return 0
   else
+    timestamp=$(date "+%Y-%m-%d %H:%M:%S")
+    echo "[$timestamp] $SCRIPT_NAME: Failed to detect $package_title" >&2
     if "$exit_flag" ; then
-      timestamp=$(date "+%Y-%m-%d %H:%M:%S")
-      echo "[$timestamp] $SCRIPT_NAME: Failed to detect $package_title" >&2
       exit 1
     fi
     return 1
