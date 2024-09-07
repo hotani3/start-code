@@ -9,7 +9,7 @@ do
 done
 
 # if not specified in an arg, set default version
-if [ -z $PYTHON_VERSION ]; then
+if [ -z "$PYTHON_VERSION" ]; then
   PYTHON_VERSION=$DEFAULT_PYTHON_VERSION
 fi
 

@@ -37,7 +37,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # switch back to the previous Python version if it was defined
-if [ -n "$PREV_PYTHON_VERSION" ] && [ "$PREV_PYTHON_VERSION" != "$PYTHON_VERSION" ] ; then
+if [ -n "$PREV_PYTHON_VERSION" ] && [ "$PREV_PYTHON_VERSION" != "$PYTHON_VERSION" ]; then
   execute "Switching back to Python $PREV_PYTHON_VERSION" \
         "pyenv global $PREV_PYTHON_VERSION" "Failed to switch back Python version to $PREV_PYTHON_VERSION"
 
@@ -45,13 +45,13 @@ if [ -n "$PREV_PYTHON_VERSION" ] && [ "$PREV_PYTHON_VERSION" != "$PYTHON_VERSION
   detect_cmd="python -V >/dev/null 2>&1"
   version_cmd='python -V | awk '\''{print $2}'\'''
   detect $package_title $detect_cmd $version_cmd true
-  if [ $? -eq 0 ] ; then
+  if [ $? -eq 0 ]; then
     package_title='Pipenv'
     detect_cmd='pipenv --version >/dev/null 2>&1'
     version_cmd='pipenv --version | awk '\''{print $3}'\'''
     install_cmd='pip install pipenv'
     detect $package_title $detect_cmd $version_cmd false
-    if [ $? -ne 0 ] ; then
+    if [ $? -ne 0 ]; then
       install $package_title $install_cmd
       detect $package_title $detect_cmd $version_cmd true
     fi

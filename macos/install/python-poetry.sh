@@ -48,7 +48,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # switch back to the previous Python version if it was defined
-if [ -n "$PREV_PYTHON_VERSION" ] && [ "$PREV_PYTHON_VERSION" != "$PYTHON_VERSION" ] ; then
+if [ -n "$PREV_PYTHON_VERSION" ] && [ "$PREV_PYTHON_VERSION" != "$PYTHON_VERSION" ]; then
   execute "Switching back to Python $PREV_PYTHON_VERSION" \
         "pyenv global $PREV_PYTHON_VERSION" "Failed to switch back Python version to $PREV_PYTHON_VERSION"
 fi

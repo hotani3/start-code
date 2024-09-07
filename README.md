@@ -2,6 +2,8 @@
 これからプログラミングを始める方が、素早く開発環境を構築するための、セットアップスクリプト集です。  
 Shell scripts to setup build and runtime environments with version managers for a starter.
 
+Here is English version of [README](./README_en.md).
+
 ## 背景
 現在では、複数アプリケーションを並行開発できるように、1台の開発マシンに複数バージョンの開発・実行環境をインストールし、アプリケーションごとに切り替えて使用することが常識的です。
 
