@@ -1,7 +1,7 @@
 #!/bin/zsh
 readonly SCRIPT_NAME=$(basename $0)
 
-# exit if not in start-code directory
+# Exit if not in start-code directory
 if [ $(basename $(pwd)) != "start-code" ] || [ ! -d macos ]; then
   timestamp=$(date "+%Y-%m-%d %H:%M:%S")
   echo "[$timestamp] $SCRIPT_NAME: Please run this script in the "\""start-code"\"" directory" >&2

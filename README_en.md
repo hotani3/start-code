@@ -1,5 +1,6 @@
 # start-code
-Shell scripts to setup build and runtime environments with version managers for a starter.
+Shell scripts to setup build and runtime environments with version managers for a starter.  
+これからプログラミングを始める方が、素早く開発環境を構築するための、セットアップスクリプト集です。
 
 こちらに、日本語バージョンの[README](./README.md)があります。
 

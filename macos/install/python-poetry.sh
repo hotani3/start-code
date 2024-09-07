@@ -21,7 +21,7 @@ source ./macos/lib/pyenv-python.sh
 # save current global Python version
 PREV_PYTHON_VERSION=$(pyenv versions --skip-aliases --skip-envs | grep -e '^*' | awk '{print $2}')
 
-execute "Switching to Python $PYTHON_VERSION" \
+execute "Switching Python version to $PYTHON_VERSION" \
         "pyenv global $PYTHON_VERSION" "Failed to switch Python version to $PYTHON_VERSION"
 
 package_title='Poetry'
@@ -49,6 +49,6 @@ fi
 
 # switch back to the previous Python version if it was defined
 if [ -n "$PREV_PYTHON_VERSION" ] && [ "$PREV_PYTHON_VERSION" != "$PYTHON_VERSION" ]; then
-  execute "Switching back to Python $PREV_PYTHON_VERSION" \
+  execute "Switching back Python version to $PREV_PYTHON_VERSION" \
         "pyenv global $PREV_PYTHON_VERSION" "Failed to switch back Python version to $PREV_PYTHON_VERSION"
 fi
