@@ -1,5 +1,5 @@
 # start-code
-Shell scripts to setup build and runtime environments with version managers for a starter.  
+Shell scripts to setup build and runtime environments with version control tools for a starter.  
 これからプログラミングを始める方が、素早く開発環境を構築するための、セットアップスクリプト集です。
 
 こちらに、日本語バージョンの[README](./README.md)があります。
@@ -48,11 +48,11 @@ cd start-code
 Then, execute the setup script for each language.  
 Be sure to run the script while you are in the "start-code" directory.
 ```sh
-./macos/install/python.sh -v 3.12.5
+./macos/install/python.sh -v 3.12.6
 ```
 
 You can specify the development and runtime environment version with the `-v` option.  
-If not specified, Python 3.12.5 will be installed.
+If not specified, Python 3.12.6 will be installed.
 
 Immediately after running the script, if you are prompted to enter a password as shown below, please enter your Mac login user's password.
 
@@ -61,22 +61,22 @@ Immediately after running the script, if you are prompted to enter a password as
 Wait a moment, and if the following log is output to the terminal, the Python runtime environment has been successfully installed.
 ```sh
 [2024-09-03 22:57:35] python.sh: Successfully installed Python!
-[2024-09-03 22:57:36] python.sh: Detected Python 3.12.5
+[2024-09-03 22:57:36] python.sh: Detected Python 3.12.6
 ```
 
 If you want to manage packages with Pipenv or Poetry instead of Python's standard venv+pip, run the following scripts instead of `python.sh`.
 
 #### Pipenv
 ```sh
-./macos/install/python-pipenv.sh -v 3.12.5
+./macos/install/python-pipenv.sh -v 3.12.6
 ```
 
 #### Poetry
 ```sh
-./macos/install/python-poetry.sh -v 3.12.5
+./macos/install/python-poetry.sh -v 3.12.6
 ```
 
-In the above examples, Python 3.12.5 will be installed, and additionally, Pipenv or Poetry will also be installed.  
+In the above examples, Python 3.12.6 will be installed, and additionally, Pipenv or Poetry will also be installed.  
 In all cases, the `-v` option is for specifying the Python runtime environment version, not the version of Pipenv or Poetry.
 
 Please note that for Pipenv, it will be installed for both the version specified with `-v` and the currently selected version as specified by `pyenv global`.

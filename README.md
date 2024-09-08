@@ -1,6 +1,6 @@
 # start-code
 これからプログラミングを始める方が、素早く開発環境を構築するための、セットアップスクリプト集です。  
-Shell scripts to setup build and runtime environments with version managers for a starter.
+Shell scripts to setup build and runtime environments with version control tools for a starter.
 
 Here is English version of [README](./README_en.md).
 
@@ -48,11 +48,11 @@ cd start-code
 そして、各言語のセットアップスクリプトを実行します。  
 スクリプトは必ず、「start-code」ディレクトリにいる状態で実行してください。
 ```sh
-./macos/install/python.sh -v 3.12.5
+./macos/install/python.sh -v 3.12.6
 ```
 
 `-v`オプションで開発・実行環境バージョンが指定可能です。  
-指定しなかった場合は、Python 3.12.5がインストールされます。
+指定しなかった場合は、Python 3.12.6がインストールされます。
 
 スクリプト実行直後、次のようにパスワード入力を促されたときは、Macログインユーザーのパスワードを入力してください。
 
@@ -61,22 +61,22 @@ cd start-code
 しばらく待ち、ターミナルに以下のようなログが出力されれば、Python実行環境のインストールに成功しています。
 ```sh
 [2024-09-03 22:57:35] python.sh: Successfully installed Python!
-[2024-09-03 22:57:36] python.sh: Detected Python 3.12.5
+[2024-09-03 22:57:36] python.sh: Detected Python 3.12.6
 ```
 
 Python標準のvenv+pipではなく、PipenvやPoetryでパッケージ管理を行う場合は、`python.sh`の代わりに、次のスクリプトを実行してください。
 
 #### Pipenv
 ```sh
-./macos/install/python-pipenv.sh -v 3.12.5
+./macos/install/python-pipenv.sh -v 3.12.6
 ```
 
 #### Poetry
 ```sh
-./macos/install/python-poetry.sh -v 3.12.5
+./macos/install/python-poetry.sh -v 3.12.6
 ```
 
-上記の例では、Python 3.12.5がインストールされ、さらにPipenvまたはPoetryがインストールされます。  
+上記の例では、Python 3.12.6がインストールされ、さらにPipenvまたはPoetryがインストールされます。  
 いずれの場合も、`-v`オプションはPython実行環境のバージョンです。PipenvやPoetryのバージョンではないことに注意してください。
 
 なお、Pipenvは`-v`で指定されたバージョンに加えて、`pyenv global`で指定された現在選択中のバージョンにもインストールされます。
