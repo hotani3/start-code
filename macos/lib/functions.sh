@@ -6,7 +6,7 @@ function assert_version_format() {
 
   if [[ ! $version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
     timestamp=$(date "+%Y-%m-%d %H:%M:%S")
-    echo "[$timestamp] $SCRIPT_NAME: Invalid version format: $version" >&2
+    echo "[$timestamp] ERROR $SCRIPT_NAME: Invalid version format: $version" >&2
     exit 1
   fi
 }
@@ -17,14 +17,14 @@ function execute() {
   local error_msg="$3"
   local timestamp=$(date "+%Y-%m-%d %H:%M:%S")
 
-  echo "[$timestamp] $SCRIPT_NAME: $start_msg"
+  echo "[$timestamp] INFO $SCRIPT_NAME: $start_msg"
   eval "$cmd"
   local result=$?
 
   if [ $result -eq 0 ]; then
     return 0
   else
-    echo "[$timestamp] $SCRIPT_NAME: $error_msg" >&2
+    echo "[$timestamp] ERROR $SCRIPT_NAME: $error_msg" >&2
     exit 1
   fi
 }
@@ -43,15 +43,17 @@ function detect() {
   if [ $result -eq 0 ]; then
     timestamp=$(date "+%Y-%m-%d %H:%M:%S")
     version=$(eval $version_cmd)
-    echo "[$timestamp] $SCRIPT_NAME: Detected $package_title $version"
+    echo "[$timestamp] INFO $SCRIPT_NAME: Detected $package_title $version"
     return 0
   else
     timestamp=$(date "+%Y-%m-%d %H:%M:%S")
-    echo "[$timestamp] $SCRIPT_NAME: Failed to detect $package_title" >&2
     if "$exit_flag" ; then
+      echo "[$timestamp] ERROR $SCRIPT_NAME: Failed to detect $package_title" >&2
       exit 1
+    else
+      echo "[$timestamp] WARN $SCRIPT_NAME: Failed to detect $package_title"
+      return 1
     fi
-    return 1
   fi
 }
 
@@ -60,17 +62,17 @@ function install() {
   local install_cmd="$2"
   local timestamp=$(date "+%Y-%m-%d %H:%M:%S")
 
-  echo "[$timestamp] $SCRIPT_NAME: Installing $package_title..."
+  echo "[$timestamp] INFO $SCRIPT_NAME: Installing $package_title..."
   eval "$install_cmd"
   local result=$?
 
   if [ $result -eq 0 ]; then
     timestamp=$(date "+%Y-%m-%d %H:%M:%S")
-    echo "[$timestamp] $SCRIPT_NAME: Successfully installed $package_title!"
+    echo "[$timestamp] INFO $SCRIPT_NAME: Successfully installed $package_title!"
     return 0
   else
     timestamp=$(date "+%Y-%m-%d %H:%M:%S")
-    echo "[$timestamp] $SCRIPT_NAME: Failed to install $package_title" >&2
+    echo "[$timestamp] ERROR $SCRIPT_NAME: Failed to install $package_title" >&2
     exit 1
   fi
 }
