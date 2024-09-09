@@ -37,7 +37,7 @@ git clone https://github.com/hotani3/start-code.git
 
 If the git command is not installed, download the ZIP file from [Releases](https://github.com/hotani3/start-code/releases) and extract it.
 ```sh
-unzip start-code-1.0.0.zip
+unzip start-code-1.0.0.zip && mv start-code-1.0.0 start-code
 ```
 
 Next, move to the directory that was cloned or extracted from the ZIP.
