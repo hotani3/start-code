@@ -11,7 +11,7 @@ Also, external libraries (packages) used by applications should be managed withi
 
 To achieve these two points, version control tools and package management tools are provided for each language, but it has not always been easy to set them up due to the hassle of installing multiple tools and the frequent occurrence of package dependency issues.
 
-For these reasons, I created a script that allows you to easily set up these tools and start programming quickly.
+For these reasons, I created these scripts that allows you to easily set up these tools and start programming quickly.
 
 ## System Requirements
 Currently, the only platform that has been tested is macOS.
@@ -21,7 +21,7 @@ Currently, the only platform that has been tested is macOS.
 | macOS | x86_64 (Intel), ARM64 (Apple Silicon) | Monterey, Ventura, Sonoma |
 
 ## Programming Language
-At present, this script is targeted only for Python.
+At present, these scripts are targeted only for Python.
 
 The version control tools and package management tools for each language are as follows. One standard version control tool has been chosen for each language.
 
@@ -37,7 +37,7 @@ git clone https://github.com/hotani3/start-code.git
 
 If the git command is not installed, download the ZIP file from [Releases](https://github.com/hotani3/start-code/releases) and extract it.
 ```sh
-unzip start-code.zip
+unzip start-code-1.0.0.zip
 ```
 
 Next, move to the directory that was cloned or extracted from the ZIP.
@@ -45,8 +45,8 @@ Next, move to the directory that was cloned or extracted from the ZIP.
 cd start-code
 ```
 
-Then, execute the setup script for each language.  
-Be sure to run the script while you are in the "start-code" directory.
+Then, execute a setup script for each language.  
+Be sure to run a script while you are in the "start-code" directory.
 ```sh
 ./macos/install/python.sh -v 3.12.6
 ```
@@ -60,11 +60,11 @@ Immediately after running the script, if you are prompted to enter a password as
 
 Wait a moment, and if the following log is output to the terminal, the Python runtime environment has been successfully installed.
 ```sh
-[2024-09-03 22:57:35] python.sh: Successfully installed Python!
-[2024-09-03 22:57:36] python.sh: Detected Python 3.12.6
+[2024-09-03 22:57:35] INFO python.sh: Successfully installed Python!
+[2024-09-03 22:57:36] INFO python.sh: Detected Python 3.12.6
 ```
 
-If you want to manage packages with Pipenv or Poetry instead of Python's standard venv+pip, run the following scripts instead of `python.sh`.
+If you want to manage packages with Pipenv or Poetry instead of Python's standard venv+pip, run the following script instead of `python.sh`.
 
 #### Pipenv
 ```sh
@@ -81,14 +81,25 @@ In all cases, the `-v` option is for specifying the Python runtime environment v
 
 Please note that for Pipenv, it will be installed for both the version specified with `-v` and the currently selected version as specified by `pyenv global`.
 
-Finally, open a new window or tab in the terminal, or reload `.zshrc` in the current terminal as shown below to start using the tools.
+After the script has finished running, open a new window or tab in the terminal, or reload `.zshrc` in the current terminal as shown below to start using the tools.
 
 ```sh
 source ~/.zshrc
 ```
 
+Finally, it is preferable to check the versions installed and currently selected with the `pyenv` command.
+```sh
+pyenv versions
+```
+
+Here is an example of what you see when you first install the Python runtime environment.
+```sh
+  system
+* 3.12.6 (set by /Users/username/.pyenv/version)
+```
+
 ## Additional Notes: Packages and Configuration Files Added or Updated
-When this script is executed, the following packages will be automatically downloaded and installed as necessary to ensure the operation of version control tools, development and runtime environments, and package management tools.
+When these scripts are executed, the following packages will be automatically downloaded and installed as necessary to ensure the operation of version control tools, development and runtime environments, and package management tools.
 
 #### macOS
 - Xcode Command Line Tools
@@ -102,7 +113,7 @@ Additionally, the following configuration files will be automatically updated as
 - ~/.zprofile
 - ~/.zshrc
 
-Therefore, manual installation of packages or manual setting of environment variables required for each tool's operation is not necessary.
+Therefore, you don't have to install packages or set environment variables manually for each tool to work propery.
 
 ## Reference Information
 #### Python

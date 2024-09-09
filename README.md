@@ -37,7 +37,7 @@ git clone https://github.com/hotani3/start-code.git
 
 まだgitコマンドがインストール済みでないときは、[Releases](https://github.com/hotani3/start-code/releases)からZIPファイルをダウンロードし、展開します。
 ```sh
-unzip start-code.zip
+unzip start-code-1.0.0.zip
 ```
 
 次に、クローンまたはZIP展開したディレクトリに移動します。
@@ -60,8 +60,8 @@ cd start-code
 
 しばらく待ち、ターミナルに以下のようなログが出力されれば、Python実行環境のインストールに成功しています。
 ```sh
-[2024-09-03 22:57:35] python.sh: Successfully installed Python!
-[2024-09-03 22:57:36] python.sh: Detected Python 3.12.6
+[2024-09-03 22:57:35] INFO python.sh: Successfully installed Python!
+[2024-09-03 22:57:36] INFO python.sh: Detected Python 3.12.6
 ```
 
 Python標準のvenv+pipではなく、PipenvやPoetryでパッケージ管理を行う場合は、`python.sh`の代わりに、次のスクリプトを実行してください。
@@ -81,10 +81,20 @@ Python標準のvenv+pipではなく、PipenvやPoetryでパッケージ管理を
 
 なお、Pipenvは`-v`で指定されたバージョンに加えて、`pyenv global`で指定された現在選択中のバージョンにもインストールされます。
 
-最後に、ターミナルで新規ウィンドウまたは新規タブを開くか、もしくは現在のターミナルで次のように`.zshrc`の再読み込みを行うと、各ツールが使えるようになります。
-
+スクリプト実行後、ターミナルで新規ウィンドウまたは新規タブを開くか、もしくは現在のターミナルで次のように`.zshrc`の再読み込みを行うと、各ツールが使えるようになります。
 ```sh
 source ~/.zshrc
+```
+
+最後に、`pyenv`コマンドでインストールされたバージョン、および、現在選択中のバージョンを確認することをお勧めします。
+```sh
+pyenv versions
+```
+
+初めてPython実行環境をインストールしたときの表示例です。
+```sh
+  system
+* 3.12.6 (set by /Users/username/.pyenv/version)
 ```
 
 ## 補足説明：追加・更新されるパッケージと設定ファイル
