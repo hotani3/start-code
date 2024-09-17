@@ -1,8 +1,8 @@
 #!/bin/zsh
 readonly SCRIPT_NAME=$(basename $0)
 
-# exit if not in start-code directory
-if [ $(basename $(pwd)) != "start-code" ] || [ ! -d macos ]; then
+# Exit if not in start-code directory
+if [ ! -d "macos/install" ] || [ ! -d "macos/lib" ]; then
   timestamp=$(date "+%Y-%m-%d %H:%M:%S")
   echo "[$timestamp] ERROR $SCRIPT_NAME: Please run this script in the "\""start-code"\"" directory" >&2
   exit 1
@@ -18,7 +18,7 @@ source ./macos/lib/homebrew.sh
 source ./macos/lib/pyenv.sh
 source ./macos/lib/pyenv-python.sh
 
-# save current global Python version
+# Save current global Python version
 PREV_PYTHON_VERSION=$(pyenv versions --skip-aliases --skip-envs | grep -e '^*' | awk '{print $2}')
 
 execute "Switching Python version to $PYTHON_VERSION" \
@@ -33,7 +33,7 @@ if [ $? -ne 0 ]; then
   install $package_title $install_cmd
 
   # $HOME/.local/bin is a common path for user-installed programs
-  # therefore add it to the PATH only if not exists
+  # Therefore add it to the PATH only if not exists
   echo $PATH | grep -q "$HOME/.local/bin"
   if [ $? -ne 0 ]; then
     echo "# Poetry" >> ~/.zshrc
@@ -42,12 +42,12 @@ if [ $? -ne 0 ]; then
     source ~/.zshrc
   fi
 
-  # here, exit_flag of detect function should be set to false
-  # continue to the next step regardless of the installation result
+  # Here, exit_flag of detect function should be set to false
+  # Continue to the next step regardless of the installation result
   detect $package_title $detect_cmd $version_cmd false
 fi
 
-# switch back to the previous Python version if it was defined
+# Switch back to the previous Python version if it was defined
 if [ -n "$PREV_PYTHON_VERSION" ] && [ "$PREV_PYTHON_VERSION" != "$PYTHON_VERSION" ]; then
   execute "Switching back Python version to $PREV_PYTHON_VERSION" \
         "pyenv global $PREV_PYTHON_VERSION" "Failed to switch back Python version to $PREV_PYTHON_VERSION"

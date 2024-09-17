@@ -2,7 +2,7 @@
 readonly SCRIPT_NAME=$(basename $0)
 
 # Exit if not in start-code directory
-if [ $(basename $(pwd)) != "start-code" ] || [ ! -d macos ]; then
+if [ ! -d "macos/install" ] || [ ! -d "macos/lib" ]; then
   timestamp=$(date "+%Y-%m-%d %H:%M:%S")
   echo "[$timestamp] ERROR $SCRIPT_NAME: Please run this script in the "\""start-code"\"" directory" >&2
   exit 1
