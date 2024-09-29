@@ -40,4 +40,7 @@ if [ $? -ne 0 ]; then
   source ~/.zshrc
 
   detect $package_title $detect_cmd $version_cmd true
+else
+  execute "Updating pyenv..." \
+          "brew update && brew upgrade pyenv" "Failed to update pyenv"
 fi

@@ -18,7 +18,7 @@ Currently, the only platform that has been tested is macOS.
 
 | Platform | CPU Architecture | OS Version |
 | :--- | :--- | :--- |
-| macOS | x86_64 (Intel), ARM64 (Apple Silicon) | Monterey, Ventura, Sonoma |
+| macOS | x86_64 (Intel), ARM64 (Apple Silicon) | Ventura, Sonoma |
 
 ## Programming Language
 At present, these scripts are targeted only for Python.
@@ -37,7 +37,7 @@ git clone https://github.com/hotani3/start-code.git
 
 If the git command is not installed, download the ZIP file from [Releases](https://github.com/hotani3/start-code/releases) and extract it.
 ```sh
-unzip start-code-1.0.1.zip && mv start-code-1.0.1 start-code
+unzip start-code-1.0.2.zip && mv start-code-1.0.2 start-code
 ```
 
 Next, move to the directory that was cloned or extracted from the ZIP.
