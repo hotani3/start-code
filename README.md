@@ -18,7 +18,7 @@ Here is English version of [README](./README_en.md).
 
 | プラットフォーム | CPUアーキテクチャー | OSバージョン |
 | :--- | :--- | :--- |
-| macOS | x86_64 (Intel), ARM64 (Apple Silicon) | Monterey, Ventura, Sonoma |
+| macOS | x86_64 (Intel), ARM64 (Apple Silicon) | Ventura, Sonoma |
 
 ## プログラミング言語
 現時点で、本スクリプトが対象としているプログラミング言語は、Pythonのみです。
@@ -37,7 +37,7 @@ git clone https://github.com/hotani3/start-code.git
 
 まだgitコマンドがインストール済みでないときは、[Releases](https://github.com/hotani3/start-code/releases)からZIPファイルをダウンロードし、展開します。
 ```sh
-unzip start-code-1.0.1.zip && mv start-code-1.0.1 start-code
+unzip start-code-1.0.2.zip && mv start-code-1.0.2 start-code
 ```
 
 次に、クローンまたはZIP展開したディレクトリに移動します。
