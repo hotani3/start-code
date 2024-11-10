@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# Get -v option value as Node.js version
+# Get -v option value as Node.js version number or alias
 while getopts v: OPT
 do
   case $OPT in
@@ -13,7 +13,7 @@ if [ -z "$NODE_VERSION_ALIAS" ]; then
   NODE_VERSION_ALIAS=$DEFAULT_NODE_VERSION
 fi
 
-# Validate version number format
+# Validate version number or alias format
 assert_node_version_alias $NODE_VERSION_ALIAS
 NODE_VERSION=$(resolve_node_version $NODE_VERSION_ALIAS)
 

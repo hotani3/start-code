@@ -16,18 +16,21 @@ Here is English version of [README](./README_en.md).
 ## システム要件
 現時点で、動作確認を行なっているプラットフォームはmacOSのみです。
 
-| プラットフォーム | CPUアーキテクチャー | OSバージョン |
-| :--- | :--- | :--- |
-| macOS | x86_64 (Intel), ARM64 (Apple Silicon) | Ventura, Sonoma |
+表1: 対象プラットフォーム
+| プラットフォーム | CPUアーキテクチャー | OSバージョン | シェル |
+| :--- | :--- | :--- | :--- |
+| macOS | x86_64 (Intel Chip), ARM64 (Apple Silicon) | Ventura, Sonoma, Sequoia | zsh |
 
 ## プログラミング言語
-現時点で、本スクリプトが対象としているプログラミング言語は、Pythonのみです。
+現時点で、本スクリプトが対象としているプログラミング言語は、JavaScriptとPythonです。
 
 各言語のバージョン管理ツール、パッケージ管理ツールは次の通りです。バージョン管理ツールは、言語ごとに標準的なものを1つ選択しています。
 
-| 言語 | バージョン管理ツール | 実行環境バージョン | パッケージ管理ツール |
-| :--- | :--- | :--- | :--- |
-| Python | pyenv | 3.9.x, 3.10.x, 3.11.x, 3.12.x | venv+pip, Pipenv, Poetry |
+表2: 対象プログラミング言語
+| 言語 | バージョン管理ツール | 実行環境バージョン | デフォルトバージョン | パッケージ管理ツール |
+| :--- | :--- | :--- | :--- | :--- |
+| JavaScript | nvm | Node.js 20, 22, 23 | 22.11.0 | npm |
+| Python | pyenv | 3.9, 3.10, 3.11, 3.12, 3.13 | 3.12.7 | venv+pip, Pipenv, Poetry |
 
 ## 実行方法
 まず最初に、macOSのターミナルを開き、本リポジトリをクローンします。
@@ -37,7 +40,7 @@ git clone https://github.com/hotani3/start-code.git
 
 まだgitコマンドがインストール済みでないときは、[Releases](https://github.com/hotani3/start-code/releases)からZIPファイルをダウンロードし、展開します。
 ```sh
-unzip start-code-1.0.2.zip && mv start-code-1.0.2 start-code
+unzip start-code-1.1.0.zip && mv start-code-1.1.0 start-code
 ```
 
 次に、クローンまたはZIP展開したディレクトリに移動します。
@@ -47,18 +50,28 @@ cd start-code
 
 そして、各言語のセットアップスクリプトを実行します。  
 スクリプトは必ず、「start-code」ディレクトリにいる状態で実行してください。
+
+`-v`オプションで開発・実行環境バージョンが指定可能です。  
+指定しなかった場合は、表2のデフォルトバージョンがインストールされます。
+
+#### JavaScript
+```sh
+./macos/install/javascript-node.sh -v 22.11.0
+```
+
+JavaScriptでは、`-v`オプションはNode.js実行環境のバージョンです。  
+バージョン番号に加えて、`stable`（安定版最新）, `lts/*`（LTS版最新）, `lts/iron`（LTS20系最新）, `lts/jod`（LTS22系最新）といったエイリアス（別名）指定も可能です。
+
+#### Python
 ```sh
 ./macos/install/python.sh -v 3.12.6
 ```
-
-`-v`オプションで開発・実行環境バージョンが指定可能です。  
-指定しなかった場合は、Python 3.12.6がインストールされます。
 
 スクリプト実行直後、次のようにパスワード入力を促されたときは、Macログインユーザーのパスワードを入力してください。
 
 <img src="./images/password-prompt.png" width="800px" alt="パスワード入力" />
 
-しばらく待ち、ターミナルに以下のようなログが出力されれば、Python実行環境のインストールに成功しています。
+しばらく待ち、ターミナルに以下のようなログが出力されれば、開発・実行環境のインストールに成功しています。
 ```sh
 [2024-09-03 22:57:35] INFO python.sh: Successfully installed Python!
 [2024-09-03 22:57:36] INFO python.sh: Detected Python 3.12.6
@@ -81,12 +94,26 @@ Python標準のvenv+pipではなく、PipenvやPoetryでパッケージ管理を
 
 なお、Pipenvは`-v`で指定されたバージョンに加えて、`pyenv global`で指定された現在選択中のバージョンにもインストールされます。
 
-スクリプト実行後、ターミナルで新規ウィンドウまたは新規タブを開くか、もしくは現在のターミナルで次のように`.zshrc`の再読み込みを行うと、各ツールが使えるようになります。
+**スクリプト実行後、ターミナルで新規ウィンドウまたは新規タブを開くか、もしくは現在のターミナルで次のように`.zshrc`の再読み込みを行うと、各ツールが使えるようになります。**
 ```sh
 source ~/.zshrc
 ```
 
-最後に、`pyenv`コマンドでインストールされたバージョン、および、現在選択中のバージョンを確認することをお勧めします。
+最後に、バージョン管理ツールでインストールされたバージョン、および、現在選択中のバージョンを確認することをお勧めします。
+#### JavaScript
+```sh
+nvm ls
+```
+
+初めてJavaScript実行環境をインストールしたときの表示例です。
+```sh
+->     v22.11.0
+         system
+default -> 22.11.0 (-> v22.11.0)
+[後略]
+```
+
+#### Python
 ```sh
 pyenv versions
 ```
@@ -100,21 +127,19 @@ pyenv versions
 ## 補足説明：追加・更新されるパッケージと設定ファイル
 本スクリプトを実行すると、バージョン管理ツール、開発・実行環境、パッケージ管理ツールの動作のため、必要に応じて以下のパッケージが自動でダウンロード、インストールされます。
 
-#### macOS
-- Xcode Command Line Tools
-- Homebrew
-- OpenSSL
-- XZ Utils
-
 加えて、環境変数やプログラム実行パスの設定を行うため、必要に応じて以下の設定ファイルも自動更新されます。
 
-#### macOS
-- ~/.zprofile
-- ~/.zshrc
+表3: 追加・更新対象のパッケージ・設定ファイル
+| プラットフォーム | パッケージ | 設定ファイル |
+| :--- | :--- | :--- |
+| macOS | * Xcode Command Line Tools</br>* Homebrew</br>* OpenSSL</br>* XZ Utils | * ~/.zprofile</br>* ~/.zshrc |
 
 このため、各ツールの動作に必要なパッケージの手動インストールや、環境変数の手動設定は不要です。
 
 ## 参考情報
+#### JavaScript
+- [nvm(Node Version Manager)を使ってNode.jsをインストールする手順](https://qiita.com/ffggss/items/94f1c4c5d311db2ec71a)
+
 #### Python
 - [pyenv, virtualenv, pipenv, poetry の概要](https://blog.serverworks.co.jp/pyenv-virtualenv-pipenv-poetry)
 - [Pipenvを使ったPython開発まとめ](https://qiita.com/y-tsutsu/items/54c10e0b2c6b565c887a)

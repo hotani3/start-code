@@ -11,12 +11,13 @@ function assert_version_format() {
   fi
 }
 
-# Validate a version format for Node.js
+# Validate Node.js version number or alias format
 # nvm can accept a format like "stable" or "lts/*" or "lts/jod" or "22" or "22.11" or "22.11.0"
 function assert_node_version_alias() {
   local version="$1"
   local timestamp=""
 
+  # Refs: https://qiita.com/ko1nksm/items/3d1fd784611620b1bea5
   if [[ ! $version =~ (stable|lts/[*]|lts/iron|lts/jod) ]] && [[ ! $version =~ ^[0-9]+(\.[0-9]+){0,2}$ ]]; then
     timestamp=$(date "+%Y-%m-%d %H:%M:%S")
     echo "[$timestamp] ERROR $SCRIPT_NAME: Invalid version format: $version" >&2
@@ -24,7 +25,7 @@ function assert_node_version_alias() {
   fi
 }
 
-# Resolve a version from alias for Node.js using "nvm ls-remote"
+# Resolve Node.js version number from alias using "nvm ls-remote"
 function resolve_node_version() {
   local alias="$1"
   local version="$DEFAULT_NODE_VERSION"
