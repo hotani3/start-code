@@ -132,7 +132,7 @@ pyenv versions
 表3: 追加・更新対象のパッケージ・設定ファイル
 | プラットフォーム | パッケージ | 設定ファイル |
 | :--- | :--- | :--- |
-| macOS | * Xcode Command Line Tools</br>* Homebrew</br>* OpenSSL</br>* XZ Utils | * ~/.zprofile</br>* ~/.zshrc |
+| macOS | <ul><li>Xcode Command Line Tools</li><li>Homebrew</li><li>OpenSSL</li><li>XZ Utils</li></ul> | <ul><li>~/.zprofile</li><li>~/.zshrc</li></ul> |
 
 このため、各ツールの動作に必要なパッケージの手動インストールや、環境変数の手動設定は不要です。
 
