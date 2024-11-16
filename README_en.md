@@ -19,7 +19,7 @@ Currently, the only platform that has been tested is macOS.
 Table 1: Target Platforms
 | Platform | CPU Architecture | OS Version | Shell |
 | :--- | :--- | :--- | :--- |
-| macOS | x86_64 (Intel Chip), ARM64 (Apple Silicon) | Ventura, Sonoma, Sequoia | zsh |
+| macOS | <ul><li>x86_64 (Intel Chip)</li><li>ARM64 (Apple Silicon)</li></ul> | <ul><li>Ventura (13)</li><li>Sonoma (14)</li><li>Sequoia (15)</li></ul> | zsh |
 
 ## Programming Language
 At present, these scripts are targeted for JavaScript and Python.
@@ -30,7 +30,7 @@ Table 2: Target Programming Languages
 | Language | Version Control Tool | Runtime Version | Default Version | Package Management Tool |
 | :--- | :--- | :--- | :--- | :--- |
 | Javascript | nvm | Node.js 20, 22, 23 | 22.11.0 | npm |
-| Python | pyenv | 3.9, 3.10, 3.11, 3.12 | 3.12.7 | venv+pip, Pipenv, Poetry |
+| Python | pyenv | 3.9, 3.10, 3.11, 3.12, 3.13 | 3.12.7 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
 
 ## How to Execute
 First, open the macOS terminal and clone this repository.
@@ -40,7 +40,7 @@ git clone https://github.com/hotani3/start-code.git
 
 If the git command is not installed, download the ZIP file from [Releases](https://github.com/hotani3/start-code/releases) and extract it.
 ```sh
-unzip start-code-1.1.0.zip && mv start-code-1.1.0 start-code
+unzip start-code-1.1.1.zip && mv start-code-1.1.1 start-code
 ```
 
 Next, move to the directory that was cloned or extracted from the ZIP.
@@ -133,7 +133,7 @@ Additionally, the following configuration files will be automatically updated as
 Table 3: Packages and Configuration Files to be Added or Updated
 | Platform | Package | Configuration File |
 | :--- | :--- | :--- |
-| macOS | <ul><li>Xcode Command Line Tools</li><li>Homebrew</li><li>OpenSSL</li><li>XZ Utils</li></ul> | <ul><li>~/.zprofile</li><li>~/.zshrc</li></ul> |
+| macOS | <ul><li>Xcode Command Line Tools</li><li>Homebrew</li><li>XZ Utils</li></ul> | <ul><li>\~/.zprofile</li><li>\~/.zshrc</li></ul> |
 
 Therefore, you don't have to install packages or set environment variables manually for each tool to work propery.
 

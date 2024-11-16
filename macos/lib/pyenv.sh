@@ -1,15 +1,5 @@
 #!/bin/zsh
 
-package_title='OpenSSL'
-detect_cmd='brew list --versions openssl@1.1 >/dev/null 2>&1'
-version_cmd='brew list --versions openssl@1.1 | awk '\''{print $2}'\'''
-install_cmd='HOMEBREW_NO_INSTALL_CLEANUP=1 brew install openssl@1.1'
-detect $package_title $detect_cmd $version_cmd false
-if [ $? -ne 0 ]; then
-  install $package_title $install_cmd
-  detect $package_title $detect_cmd $version_cmd true
-fi
-
 package_title='XZ Utils'
 detect_cmd='brew list --versions xz >/dev/null 2>&1'
 version_cmd='brew list --versions xz | awk '\''{print $2}'\'''

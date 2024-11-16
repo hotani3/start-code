@@ -19,7 +19,7 @@ Here is English version of [README](./README_en.md).
 表1: 対象プラットフォーム
 | プラットフォーム | CPUアーキテクチャー | OSバージョン | シェル |
 | :--- | :--- | :--- | :--- |
-| macOS | x86_64 (Intel Chip), ARM64 (Apple Silicon) | Ventura, Sonoma, Sequoia | zsh |
+| macOS | <ul><li>x86_64 (Intel Chip)</li><li>ARM64 (Apple Silicon)</li></ul> | <ul><li>Ventura (13)</li><li>Sonoma (14)</li><li>Sequoia (15)</li></ul> | zsh |
 
 ## プログラミング言語
 現時点で、本スクリプトが対象としているプログラミング言語は、JavaScriptとPythonです。
@@ -30,7 +30,7 @@ Here is English version of [README](./README_en.md).
 | 言語 | バージョン管理ツール | 実行環境バージョン | デフォルトバージョン | パッケージ管理ツール |
 | :--- | :--- | :--- | :--- | :--- |
 | JavaScript | nvm | Node.js 20, 22, 23 | 22.11.0 | npm |
-| Python | pyenv | 3.9, 3.10, 3.11, 3.12, 3.13 | 3.12.7 | venv+pip, Pipenv, Poetry |
+| Python | pyenv | 3.9, 3.10, 3.11, 3.12, 3.13 | 3.12.7 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
 
 ## 実行方法
 まず最初に、macOSのターミナルを開き、本リポジトリをクローンします。
@@ -40,7 +40,7 @@ git clone https://github.com/hotani3/start-code.git
 
 まだgitコマンドがインストール済みでないときは、[Releases](https://github.com/hotani3/start-code/releases)からZIPファイルをダウンロードし、展開します。
 ```sh
-unzip start-code-1.1.0.zip && mv start-code-1.1.0 start-code
+unzip start-code-1.1.1.zip && mv start-code-1.1.1 start-code
 ```
 
 次に、クローンまたはZIP展開したディレクトリに移動します。
@@ -132,7 +132,7 @@ pyenv versions
 表3: 追加・更新対象のパッケージ・設定ファイル
 | プラットフォーム | パッケージ | 設定ファイル |
 | :--- | :--- | :--- |
-| macOS | <ul><li>Xcode Command Line Tools</li><li>Homebrew</li><li>OpenSSL</li><li>XZ Utils</li></ul> | <ul><li>~/.zprofile</li><li>~/.zshrc</li></ul> |
+| macOS | <ul><li>Xcode Command Line Tools</li><li>Homebrew</li><li>XZ Utils</li></ul> | <ul><li>\~/.zprofile</li><li>\~/.zshrc</li></ul> |
 
 このため、各ツールの動作に必要なパッケージの手動インストールや、環境変数の手動設定は不要です。
 
