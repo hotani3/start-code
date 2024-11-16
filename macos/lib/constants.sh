@@ -1,5 +1,5 @@
 #!/bin/zsh
-readonly SCRIPT_VERSION="1.1.0"
+readonly SCRIPT_VERSION="1.1.1"
 readonly NVM_VERSION="0.40.1"
 
 readonly DEFAULT_PYTHON_VERSION="3.12.7"
