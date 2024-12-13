@@ -13,6 +13,7 @@ install_cmd="curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION
 detect $package_title $detect_cmd $version_cmd false
 if [ $? -ne 0 ]; then
   echo "# nvm" >> ~/.zshrc
+  sync
   install $package_title $install_cmd
 
   # .zshrc is automatically updated by nvm install script

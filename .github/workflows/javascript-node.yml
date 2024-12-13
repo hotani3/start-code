@@ -9,7 +9,7 @@ jobs:
       # Checkout this repo
       - name: Checkout
         uses: actions/checkout@v4
-      # Run a script using zsh
+      # Run the script using zsh
       - name: Run script
         run: |
           echo $HOME
@@ -28,7 +28,7 @@ jobs:
       # Checkout this repo
       - name: Checkout
         uses: actions/checkout@v4
-      # Run a script using zsh
+      # Run the script using zsh
       - name: Run script
         run: |
           echo $HOME

@@ -1,10 +1,6 @@
 name: Test python.sh
 
-on:
-  push:
-    branches:
-      - main
-      - develop
+on: push
 
 jobs:
   test-on-macos-ventura-x86_64:
@@ -12,11 +8,19 @@ jobs:
     steps:
       # Checkout this repo
       - name: Checkout
-        uses: actions/checkout@v2
-      # Run a script using zsh
-      - name: Run script
+        uses: actions/checkout@v4
+      # Run the script using zsh
+      - name: Install Python 3.9.0
         run: |
-          ./macos/install/python.sh
+          ./macos/install/python.sh -v 3.9.0
+        shell: zsh {0}
+      - name: Install Python 3.9.21
+        run: |
+          ./macos/install/python.sh -v 3.9.21
+        shell: zsh {0}
+      - name: Install Python 3.13.1
+        run: |
+          ./macos/install/python.sh -v 3.13.1
         shell: zsh {0}
   
   test-on-macos-sonoma-arm64:
@@ -24,9 +28,17 @@ jobs:
     steps:
       # Checkout this repo
       - name: Checkout
-        uses: actions/checkout@v2
-      # Run a script using zsh
-      - name: Run script
+        uses: actions/checkout@v4
+      # Run the script using zsh
+      - name: Install Python 3.9.0
         run: |
-          ./macos/install/python.sh
+          ./macos/install/python.sh -v 3.9.0
+        shell: zsh {0}
+      - name: Install Python 3.9.21
+        run: |
+          ./macos/install/python.sh -v 3.9.21
+        shell: zsh {0}
+      - name: Install Python 3.13.1
+        run: |
+          ./macos/install/python.sh -v 3.13.1
         shell: zsh {0}
