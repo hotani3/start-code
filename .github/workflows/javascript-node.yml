@@ -1,0 +1,30 @@
+name: Test javascript-node.sh
+
+on: push
+
+jobs:
+  test-on-macos-ventura-x86_64:
+    runs-on: macos-13
+    steps:
+      # Checkout this repo
+      - name: Checkout
+        uses: actions/checkout@v2
+      # Run a script using zsh
+      - name: Run script
+        shell: zsh
+        run: |
+          pwd
+          ./macos/install/javascript-node.sh
+  
+  test-on-macos-ventura-arm64:
+    runs-on: macos-13-xlarge
+    steps:
+      # Checkout this repo
+      - name: Checkout
+        uses: actions/checkout@v2
+      # Run a script using zsh
+      - name: Run script
+        shell: zsh
+        run: |
+          pwd
+          ./macos/install/javascript-node.sh
