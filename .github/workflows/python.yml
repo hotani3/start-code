@@ -2,6 +2,10 @@ name: Test python.sh
 
 on: push
 
+env:
+  # Overwrite the default shell to zsh
+  SHELL: /bin/zsh
+
 jobs:
   test-on-macos-ventura-x86_64:
     runs-on: macos-13
@@ -30,11 +34,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       # Run the script using zsh
-      - name: Install Python 3.9.0
+      # 3.9.1 is the first version that supports Apple Silicon
+      - name: Install Python 3.9.1
         run: |
-          echo $SHELL
-          brew uninstall -f openssl@1.1
-          ./macos/install/python.sh -v 3.9.0
+          ./macos/install/python.sh -v 3.9.1
         shell: zsh {0}
       - name: Install Python 3.9.21
         run: |
