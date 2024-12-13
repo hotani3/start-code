@@ -2,6 +2,10 @@ name: Test javascript-node.sh
 
 on: push
 
+env:
+  # Overwrite the default shell to zsh
+  SHELL: /bin/zsh
+
 jobs:
   test-on-macos-ventura-x86_64:
     runs-on: macos-13
@@ -12,8 +16,6 @@ jobs:
       # Run the script using zsh
       - name: Run script
         run: |
-          cat /etc/shells
-          chsh -s /bin/zsh
           echo $SHELL
           ./macos/install/javascript-node.sh
           echo "cat ~/.bash_profile"
@@ -33,8 +35,6 @@ jobs:
       # Run the script using zsh
       - name: Run script
         run: |
-          cat /etc/shells
-          chsh -s /bin/zsh
           echo $SHELL
           ./macos/install/javascript-node.sh
           echo "cat ~/.bash_profile"
