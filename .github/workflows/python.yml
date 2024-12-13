@@ -1,6 +1,10 @@
 name: Test python.sh
 
-on: push
+on:
+  push:
+    branches:
+      - main
+      - develop
 
 jobs:
   test-on-macos-ventura-x86_64:

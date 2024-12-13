@@ -12,8 +12,9 @@ jobs:
       # Run a script using zsh
       - name: Run script
         run: |
-          pwd
+          echo $HOME
           ./macos/install/javascript-node.sh
+          cat ~/.zshrc
         shell: zsh {0}
   
   test-on-macos-sonoma-arm64:
@@ -25,6 +26,7 @@ jobs:
       # Run a script using zsh
       - name: Run script
         run: |
-          pwd
+          echo $HOME
           ./macos/install/javascript-node.sh
+          cat ~/.zshrc
         shell: zsh {0}
