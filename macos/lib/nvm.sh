@@ -1,7 +1,9 @@
 #!/bin/zsh
 
 # Enable the nvm command if already installed
-source ~/.zshrc
+if [ -f ~/.zshrc ]; then
+  source ~/.zshrc
+fi
 
 package_title='nvm'
 detect_cmd='nvm --version >/dev/null 2>&1'

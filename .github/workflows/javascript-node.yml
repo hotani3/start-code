@@ -8,12 +8,17 @@ jobs:
     steps:
       # Checkout this repo
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       # Run a script using zsh
       - name: Run script
         run: |
           echo $HOME
           ./macos/install/javascript-node.sh
+          echo "cat ~/.bash_profile"
+          cat ~/.bash_profile
+          echo "cat ~/.bashrc"
+          cat ~/.bashrc
+          echo "cat ~/.zshrc"
           cat ~/.zshrc
         shell: zsh {0}
   
@@ -22,11 +27,16 @@ jobs:
     steps:
       # Checkout this repo
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       # Run a script using zsh
       - name: Run script
         run: |
           echo $HOME
           ./macos/install/javascript-node.sh
+          echo "cat ~/.bash_profile"
+          cat ~/.bash_profile
+          echo "cat ~/.bashrc"
+          cat ~/.bashrc
+          echo "cat ~/.zshrc"
           cat ~/.zshrc
         shell: zsh {0}
