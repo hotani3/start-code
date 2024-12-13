@@ -12,7 +12,7 @@ jobs:
       # Run the script using zsh
       - name: Run script
         run: |
-          echo $HOME
+          echo $SHELL
           ./macos/install/javascript-node.sh
           echo "cat ~/.bash_profile"
           cat ~/.bash_profile
@@ -31,7 +31,7 @@ jobs:
       # Run the script using zsh
       - name: Run script
         run: |
-          echo $HOME
+          echo $SHELL
           ./macos/install/javascript-node.sh
           echo "cat ~/.bash_profile"
           cat ~/.bash_profile
