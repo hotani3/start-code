@@ -32,7 +32,8 @@ jobs:
       # Run the script using zsh
       - name: Install Python 3.9.0
         run: |
-          brew list --versions
+          echo $SHELL
+          brew uninstall -f openssl@1.1
           ./macos/install/python.sh -v 3.9.0
         shell: zsh {0}
       - name: Install Python 3.9.21
