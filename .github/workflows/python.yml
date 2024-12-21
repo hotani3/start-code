@@ -1,6 +1,12 @@
 name: Test python.sh
 
-on: push
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches-ignore:
+      - main
 
 env:
   # Overwrite the default shell to zsh
@@ -14,17 +20,34 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       # Run the script using zsh
-      - name: Install Python 3.9.0
+      - name: Install Python 3.9.1
         run: |
-          ./macos/install/python.sh -v 3.9.0
+          ./macos/install/python.sh -v 3.9.1
         shell: zsh {0}
       - name: Install Python 3.9.21
         run: |
           ./macos/install/python.sh -v 3.9.21
         shell: zsh {0}
+      - name: Install Python 3.10.16
+        run: |
+          ./macos/install/python.sh -v 3.10.16
+        shell: zsh {0}
+      - name: Install Python 3.11.11
+        run: |
+          ./macos/install/python.sh -v 3.11.11
+        shell: zsh {0}
+      - name: Install Python 3.12.8
+        run: |
+          ./macos/install/python.sh -v 3.12.8
+        shell: zsh {0}
       - name: Install Python 3.13.1
         run: |
           ./macos/install/python.sh -v 3.13.1
+        shell: zsh {0}
+      - name: List all Python versions
+        run: |
+          source ~/.zshrc
+          pyenv versions
         shell: zsh {0}
   
   test-on-macos-sonoma-arm64:
@@ -43,7 +66,24 @@ jobs:
         run: |
           ./macos/install/python.sh -v 3.9.21
         shell: zsh {0}
+      - name: Install Python 3.10.16
+        run: |
+          ./macos/install/python.sh -v 3.10.16
+        shell: zsh {0}
+      - name: Install Python 3.11.11
+        run: |
+          ./macos/install/python.sh -v 3.11.11
+        shell: zsh {0}
+      - name: Install Python 3.12.8
+        run: |
+          ./macos/install/python.sh -v 3.12.8
+        shell: zsh {0}
       - name: Install Python 3.13.1
         run: |
           ./macos/install/python.sh -v 3.13.1
+        shell: zsh {0}
+      - name: List all Python versions
+        run: |
+          source ~/.zshrc
+          pyenv versions
         shell: zsh {0}
