@@ -30,7 +30,7 @@ Table 2: Target Programming Languages
 | Language | Version Control Tool | Runtime Version | Default Version | Package Management Tool |
 | :--- | :--- | :--- | :--- | :--- |
 | Javascript | nvm | Node.js 20, 22, 23 | 22.11.0 | npm |
-| Python | pyenv | 3.9, 3.10, 3.11, 3.12, 3.13 | 3.12.7 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
+| Python | pyenv | 3.9.1 or higher, 3.10, 3.11, 3.12, 3.13 | 3.12.7 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
 
 ## How to Execute
 First, open the macOS terminal and clone this repository.
