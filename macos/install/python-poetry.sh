@@ -24,6 +24,11 @@ PREV_PYTHON_VERSION=$(pyenv versions --skip-aliases --skip-envs | grep -e '^*' |
 execute "Switching Python version to $PYTHON_VERSION" \
         "pyenv global $PYTHON_VERSION" "Failed to switch Python version to $PYTHON_VERSION"
 
+# Enable the poetry command if already installed
+if [ -f ~/.zshrc ]; then
+  source ~/.zshrc
+fi
+
 package_title='Poetry'
 detect_cmd='poetry --version >/dev/null 2>&1'
 version_cmd="poetry --version | grep -oE '[0-9]+\.[0-9]+\.[0-9]+'"
