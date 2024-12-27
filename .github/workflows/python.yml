@@ -26,6 +26,9 @@ jobs:
         shell: zsh {0}
       - name: Install Python 3.9.21
         run: |
+          cat ~/.zshrc
+          echo $PYENV_ROOT
+          echo $PATH
           ./macos/install/python.sh -v 3.9.21
         shell: zsh {0}
       - name: Install Python 3.10.16
