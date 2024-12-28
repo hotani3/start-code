@@ -1,3 +1,6 @@
+![JavaScript](https://github.com/hotani3/start-code/actions/workflows/javascript-on-macos.yml/badge.svg)&emsp;
+![Python](https://github.com/hotani3/start-code/actions/workflows/python-on-macos.yml/badge.svg)
+
 # start-code
 これからプログラミングを始める方が、素早く開発環境を構築するための、セットアップスクリプト集です。  
 Shell scripts to setup build and runtime environments with version control tools for a starter.
