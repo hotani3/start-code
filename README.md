@@ -1,5 +1,5 @@
-![JavaScript](https://github.com/hotani3/start-code/actions/workflows/javascript-on-macos.yml/badge.svg)&emsp;
-![Python](https://github.com/hotani3/start-code/actions/workflows/python-on-macos.yml/badge.svg)
+![JavaScript on macOS](https://github.com/hotani3/start-code/actions/workflows/javascript-on-macos.yml/badge.svg)&emsp;
+![Python on macOS](https://github.com/hotani3/start-code/actions/workflows/python-on-macos.yml/badge.svg)
 
 # start-code
 これからプログラミングを始める方が、素早く開発環境を構築するための、セットアップスクリプト集です。  
@@ -63,7 +63,7 @@ cd start-code
 ```
 
 JavaScriptでは、`-v`オプションはNode.js実行環境のバージョンです。  
-バージョン番号に加えて、`stable`（安定版最新）, `lts/*`（LTS版最新）, `lts/iron`（LTS20系最新）, `lts/jod`（LTS22系最新）といったエイリアス（別名）指定も可能です。
+バージョン番号に加えて、`stable`（安定版最新）, `'lts/*'`（LTS版最新）, `lts/iron`（LTS20系最新）, `lts/jod`（LTS22系最新）といったエイリアス（別名）指定も可能です。
 
 #### Python
 ```sh

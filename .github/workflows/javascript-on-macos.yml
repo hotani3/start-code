@@ -63,7 +63,7 @@ jobs:
       - name: Install Node.js LTS latest
         shell: zsh {0}
         run: |
-          ./macos/install/javascript-node.sh -v lts/*
+          ./macos/install/javascript-node.sh -v 'lts/*'
       - name: Install Node.js stable version
         shell: zsh {0}
         run: |
@@ -122,7 +122,7 @@ jobs:
       - name: Install Node.js LTS latest
         shell: zsh {0}
         run: |
-          ./macos/install/javascript-node.sh -v lts/*
+          ./macos/install/javascript-node.sh -v 'lts/*'
       - name: Install Node.js stable version
         shell: zsh {0}
         run: |

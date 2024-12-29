@@ -1,5 +1,5 @@
-![JavaScript](https://github.com/hotani3/start-code/actions/workflows/javascript-on-macos.yml/badge.svg)&emsp;
-![Python](https://github.com/hotani3/start-code/actions/workflows/python-on-macos.yml/badge.svg)
+![JavaScript on macOS](https://github.com/hotani3/start-code/actions/workflows/javascript-on-macos.yml/badge.svg)&emsp;
+![Python on macOS](https://github.com/hotani3/start-code/actions/workflows/python-on-macos.yml/badge.svg)
 
 # start-code
 Shell scripts to setup build and runtime environments with version control tools for a starter.  
@@ -63,7 +63,7 @@ If not specified, the default version in Table 2 will be installed.
 ```
 
 In JavaScript, the `-v` option is the version of the Node.js runtime environment.  
-In addition to the version number, you can also specify aliases such as `stable` (latest stable version), `lts/*` (latest LTS version), `lts/iron` (latest of LTS 20 series), and `lts/jod` (latest of LTS 22 series).
+In addition to the version number, you can also specify aliases such as `stable` (latest stable version), `'lts/*'` (latest LTS version), `lts/iron` (latest of LTS 20 series), and `lts/jod` (latest of LTS 22 series).
 
 #### Python
 ```sh
