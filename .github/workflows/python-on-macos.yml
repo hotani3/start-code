@@ -1,4 +1,4 @@
-name: Install Python on macOS
+name: Python on macOS
 
 on:
   pull_request:
