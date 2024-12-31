@@ -10,6 +10,11 @@ if [ $? -ne 0 ]; then
   detect $package_title $detect_cmd $version_cmd true
 fi
 
+# Enable the pyenv command if already installed
+if [ -f ~/.zshrc ]; then
+  source ~/.zshrc
+fi
+
 package_title='pyenv'
 detect_cmd='pyenv -v >/dev/null 2>&1'
 version_cmd='pyenv -v | awk '\''{print $2}'\'''
