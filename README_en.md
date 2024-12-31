@@ -1,3 +1,6 @@
+![JavaScript on macOS](https://github.com/hotani3/start-code/actions/workflows/javascript-on-macos.yml/badge.svg)&emsp;
+![Python on macOS](https://github.com/hotani3/start-code/actions/workflows/python-on-macos.yml/badge.svg)
+
 # start-code
 Shell scripts to setup build and runtime environments with version control tools for a starter.  
 これからプログラミングを始める方が、素早く開発環境を構築するための、セットアップスクリプト集です。
@@ -29,8 +32,8 @@ The version control tool and package management tools for each language are as f
 Table 2: Target Programming Languages
 | Language | Version Control Tool | Runtime Version | Default Version | Package Management Tool |
 | :--- | :--- | :--- | :--- | :--- |
-| Javascript | nvm | Node.js 20, 22, 23 | 22.11.0 | npm |
-| Python | pyenv | 3.9, 3.10, 3.11, 3.12, 3.13 | 3.12.7 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
+| Javascript | nvm | Node.js 20, 22, 23 | 22.12.0 | npm |
+| Python | pyenv | 3.9.1 or higher, 3.10, 3.11, 3.12, 3.13 | 3.12.8 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
 
 ## How to Execute
 First, open the macOS terminal and clone this repository.
@@ -40,7 +43,7 @@ git clone https://github.com/hotani3/start-code.git
 
 If the git command is not installed, download the ZIP file from [Releases](https://github.com/hotani3/start-code/releases) and extract it.
 ```sh
-unzip start-code-1.1.1.zip && mv start-code-1.1.1 start-code
+unzip start-code-1.1.2.zip && mv start-code-1.1.2 start-code
 ```
 
 Next, move to the directory that was cloned or extracted from the ZIP.
@@ -56,15 +59,15 @@ If not specified, the default version in Table 2 will be installed.
 
 #### JavaScript
 ```sh
-./macos/install/javascript-node.sh -v 22.11.0
+./macos/install/javascript-node.sh -v 22.12.0
 ```
 
 In JavaScript, the `-v` option is the version of the Node.js runtime environment.  
-In addition to the version number, you can also specify aliases such as `stable` (latest stable version), `lts/*` (latest LTS version), `lts/iron` (latest of LTS 20 series), and `lts/jod` (latest of LTS 22 series).
+In addition to the version number, you can also specify aliases such as `stable` (latest stable version), `'lts/*'` (latest LTS version), `lts/iron` (latest of LTS 20 series), and `lts/jod` (latest of LTS 22 series).
 
 #### Python
 ```sh
-./macos/install/python.sh -v 3.12.7
+./macos/install/python.sh -v 3.12.8
 ```
 
 Immediately after running the script, if you are prompted to enter a password as shown below, please enter your Mac login user's password.
@@ -74,22 +77,22 @@ Immediately after running the script, if you are prompted to enter a password as
 Wait a moment, and if the following log is output to the terminal, a development or runtime environment has been successfully installed.
 ```sh
 [2024-09-03 22:57:35] INFO python.sh: Successfully installed Python!
-[2024-09-03 22:57:36] INFO python.sh: Detected Python 3.12.7
+[2024-09-03 22:57:36] INFO python.sh: Detected Python 3.12.8
 ```
 
 If you want to manage packages with Pipenv or Poetry instead of Python's standard venv+pip, run the following script instead of `python.sh`.
 
 #### Pipenv
 ```sh
-./macos/install/python-pipenv.sh -v 3.12.7
+./macos/install/python-pipenv.sh -v 3.12.8
 ```
 
 #### Poetry
 ```sh
-./macos/install/python-poetry.sh -v 3.12.7
+./macos/install/python-poetry.sh -v 3.12.8
 ```
 
-In the above examples, Python 3.12.7 will be installed, and additionally, Pipenv or Poetry will also be installed.  
+In the above examples, Python 3.12.8 will be installed, and additionally, Pipenv or Poetry will also be installed.  
 In all cases, the `-v` option is for specifying the Python runtime environment version, not the version of Pipenv or Poetry.
 
 Please note that for Pipenv, it will be installed for both the version specified with `-v` and the currently selected version as specified by `pyenv global`.
@@ -108,9 +111,9 @@ nvm ls
 
 Here is an example of what you see when you first install the Node.js runtime environment.
 ```sh
-->     v22.11.0
+->     v22.12.0
          system
-default -> 22.11.0 (-> v22.11.0)
+default -> 22.12.0 (-> v22.12.0)
 [The rest is ommitted]
 ```
 
@@ -122,7 +125,7 @@ pyenv versions
 Here is an example of what you see when you first install the Python runtime environment.
 ```sh
   system
-* 3.12.7 (set by /Users/username/.pyenv/version)
+* 3.12.8 (set by /Users/username/.pyenv/version)
 ```
 
 ## Additional Notes: Packages and Configuration Files Added or Updated

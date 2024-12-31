@@ -1,7 +1,9 @@
 #!/bin/zsh
 
 # Enable the nvm command if already installed
-source ~/.zshrc
+if [ -f ~/.zshrc ]; then
+  source ~/.zshrc
+fi
 
 package_title='nvm'
 detect_cmd='nvm --version >/dev/null 2>&1'
@@ -11,6 +13,7 @@ install_cmd="curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION
 detect $package_title $detect_cmd $version_cmd false
 if [ $? -ne 0 ]; then
   echo "# nvm" >> ~/.zshrc
+  sync
   install $package_title $install_cmd
 
   # .zshrc is automatically updated by nvm install script

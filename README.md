@@ -1,3 +1,6 @@
+![JavaScript on macOS](https://github.com/hotani3/start-code/actions/workflows/javascript-on-macos.yml/badge.svg)&emsp;
+![Python on macOS](https://github.com/hotani3/start-code/actions/workflows/python-on-macos.yml/badge.svg)
+
 # start-code
 これからプログラミングを始める方が、素早く開発環境を構築するための、セットアップスクリプト集です。  
 Shell scripts to setup build and runtime environments with version control tools for a starter.
@@ -29,8 +32,8 @@ Here is English version of [README](./README_en.md).
 表2: 対象プログラミング言語
 | 言語 | バージョン管理ツール | 実行環境バージョン | デフォルトバージョン | パッケージ管理ツール |
 | :--- | :--- | :--- | :--- | :--- |
-| JavaScript | nvm | Node.js 20, 22, 23 | 22.11.0 | npm |
-| Python | pyenv | 3.9, 3.10, 3.11, 3.12, 3.13 | 3.12.7 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
+| JavaScript | nvm | Node.js 20, 22, 23 | 22.12.0 | npm |
+| Python | pyenv | 3.9.1以上, 3.10, 3.11, 3.12, 3.13 | 3.12.8 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
 
 ## 実行方法
 まず最初に、macOSのターミナルを開き、本リポジトリをクローンします。
@@ -40,7 +43,7 @@ git clone https://github.com/hotani3/start-code.git
 
 まだgitコマンドがインストール済みでないときは、[Releases](https://github.com/hotani3/start-code/releases)からZIPファイルをダウンロードし、展開します。
 ```sh
-unzip start-code-1.1.1.zip && mv start-code-1.1.1 start-code
+unzip start-code-1.1.2.zip && mv start-code-1.1.2 start-code
 ```
 
 次に、クローンまたはZIP展開したディレクトリに移動します。
@@ -56,15 +59,15 @@ cd start-code
 
 #### JavaScript
 ```sh
-./macos/install/javascript-node.sh -v 22.11.0
+./macos/install/javascript-node.sh -v 22.12.0
 ```
 
 JavaScriptでは、`-v`オプションはNode.js実行環境のバージョンです。  
-バージョン番号に加えて、`stable`（安定版最新）, `lts/*`（LTS版最新）, `lts/iron`（LTS20系最新）, `lts/jod`（LTS22系最新）といったエイリアス（別名）指定も可能です。
+バージョン番号に加えて、`stable`（安定版最新）, `'lts/*'`（LTS版最新）, `lts/iron`（LTS20系最新）, `lts/jod`（LTS22系最新）といったエイリアス（別名）指定も可能です。
 
 #### Python
 ```sh
-./macos/install/python.sh -v 3.12.7
+./macos/install/python.sh -v 3.12.8
 ```
 
 スクリプト実行直後、次のようにパスワード入力を促されたときは、Macログインユーザーのパスワードを入力してください。
@@ -74,22 +77,22 @@ JavaScriptでは、`-v`オプションはNode.js実行環境のバージョン�
 しばらく待ち、ターミナルに以下のようなログが出力されれば、開発・実行環境のインストールに成功しています。
 ```sh
 [2024-09-03 22:57:35] INFO python.sh: Successfully installed Python!
-[2024-09-03 22:57:36] INFO python.sh: Detected Python 3.12.7
+[2024-09-03 22:57:36] INFO python.sh: Detected Python 3.12.8
 ```
 
 Python標準のvenv+pipではなく、PipenvやPoetryでパッケージ管理を行う場合は、`python.sh`の代わりに、次のスクリプトを実行してください。
 
 #### Pipenv
 ```sh
-./macos/install/python-pipenv.sh -v 3.12.7
+./macos/install/python-pipenv.sh -v 3.12.8
 ```
 
 #### Poetry
 ```sh
-./macos/install/python-poetry.sh -v 3.12.7
+./macos/install/python-poetry.sh -v 3.12.8
 ```
 
-上記の例では、Python 3.12.7がインストールされ、さらにPipenvまたはPoetryがインストールされます。  
+上記の例では、Python 3.12.8がインストールされ、さらにPipenvまたはPoetryがインストールされます。  
 いずれの場合も、`-v`オプションはPython実行環境のバージョンです。PipenvやPoetryのバージョンではないことに注意してください。
 
 なお、Pipenvは`-v`で指定されたバージョンに加えて、`pyenv global`で指定された現在選択中のバージョンにもインストールされます。
@@ -107,9 +110,9 @@ nvm ls
 
 初めてNode.js実行環境をインストールしたときの表示例です。
 ```sh
-->     v22.11.0
+->     v22.12.0
          system
-default -> 22.11.0 (-> v22.11.0)
+default -> 22.12.0 (-> v22.12.0)
 [後略]
 ```
 
@@ -121,7 +124,7 @@ pyenv versions
 初めてPython実行環境をインストールしたときの表示例です。
 ```sh
   system
-* 3.12.7 (set by /Users/username/.pyenv/version)
+* 3.12.8 (set by /Users/username/.pyenv/version)
 ```
 
 ## 補足説明：追加・更新されるパッケージと設定ファイル
