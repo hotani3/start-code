@@ -16,6 +16,14 @@ echo "[$timestamp] INFO $SCRIPT_NAME $SCRIPT_VERSION: Running on macOS $MACOS_VE
 
 source ./macos/lib/homebrew.sh
 source ./macos/lib/pyenv.sh
+
+# Get -v option value as Python version
+while getopts v: OPT
+do
+  case $OPT in
+    v) PYTHON_VERSION=$OPTARG ;;
+  esac
+done
 source ./macos/lib/pyenv-python.sh
 
 # Save current global Python version

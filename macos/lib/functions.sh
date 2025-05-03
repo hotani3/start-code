@@ -41,6 +41,19 @@ function resolve_node_version() {
   echo $version
 }
 
+# Validate supported Ansible version
+function assert_ansible_version() {
+  local version="$1"
+  local timestamp=""
+
+  # Refs: https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html#ansible-core-support-matrix
+  if [[ ! $version =~ ^2\.(17|18)\.[0-9]+$ ]]; then
+    timestamp=$(date "+%Y-%m-%d %H:%M:%S")
+    echo "[$timestamp] ERROR $SCRIPT_NAME: Unsupported Ansible version: $version" >&2
+    exit 1
+  fi
+}
+
 function execute() {
   local start_msg="$1"
   local cmd="$2"
@@ -57,6 +70,17 @@ function execute() {
     echo "[$timestamp] ERROR $SCRIPT_NAME: $error_msg" >&2
     exit 1
   fi
+}
+
+# Find the latest version of a specified minor version
+function find_latest_of_minor_version() {
+  local versions_cmd="$1"
+  # minor_version should not end with a dot
+  local minor_version="$2"
+  local latest_version=""
+
+  latest_version=$(eval $versions_cmd | grep -oE "$minor_version\.[0-9]+" | tail -n 1)
+  echo $latest_version
 }
 
 function detect() {

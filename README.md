@@ -25,13 +25,14 @@ Here is English version of [README](./README_en.md).
 | macOS | <ul><li>x86_64 (Intel Chip)</li><li>ARM64 (Apple Silicon)</li></ul> | <ul><li>Ventura (13)</li><li>Sonoma (14)</li><li>Sequoia (15)</li></ul> | zsh |
 
 ## プログラミング言語
-現時点で、本スクリプトが対象としているプログラミング言語は、JavaScriptとPythonです。
+現時点で、本スクリプトが対象としているプログラミング言語は、Ansible, JavaScript, Pythonです。
 
 各言語のバージョン管理ツール、パッケージ管理ツールは次の通りです。バージョン管理ツールは、言語ごとに標準的なものを1つ選択しています。
 
 表2: 対象プログラミング言語
 | 言語 | バージョン管理ツール | 実行環境バージョン | デフォルトバージョン | パッケージ管理ツール |
 | :--- | :--- | :--- | :--- | :--- |
+| Ansible | venv | 2.17, 2.18 | 2.17.11 | ansible-galaxy |
 | JavaScript | nvm | Node.js 20, 22, 23 | 22.12.0 | npm |
 | Python | pyenv | 3.9.1以上, 3.10, 3.11, 3.12, 3.13 | 3.12.8 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
 
@@ -56,6 +57,11 @@ cd start-code
 
 `-v`オプションで開発・実行環境バージョンが指定可能です。  
 指定しなかった場合は、表2のデフォルトバージョンがインストールされます。
+
+#### Ansible
+```sh
+./macos/install/ansible.sh -v 2.17.11
+```
 
 #### JavaScript
 ```sh
@@ -103,6 +109,18 @@ source ~/.zshrc
 ```
 
 最後に、バージョン管理ツールでインストールされたバージョン、および、現在選択中のバージョンを確認することをお勧めします。
+#### Ansible
+```sh
+ls ~/envs
+```
+
+初めてAnsible実行環境をインストールしたときの表示例です。
+```sh
+ansible-2.17.11
+```
+
+インストールしたバージョンを選択して使用する方法については、[ansible.md](./docs/ansible.md)をご覧ください。
+
 #### JavaScript
 ```sh
 nvm ls
