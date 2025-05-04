@@ -60,8 +60,11 @@ cd start-code
 
 #### Ansible
 ```sh
-./macos/install/ansible.sh -v 2.17.11
+./macos/install/ansible.sh -v 2.17.11 --python 3.12.10
 ```
+
+Ansibleでは、`-v`に加えて、`--python`オプションでPython実行環境のバージョンを指定してください。  
+指定しなかった場合は、表2のデフォルトバージョンがインストールされます。
 
 #### JavaScript
 ```sh

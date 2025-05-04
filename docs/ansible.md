@@ -1,29 +1,11 @@
 # Ansible
 
-## Python 実行環境の選択
-まず最初に、Ansibleを実行するためのPython実行環境を選択します。
-```sh
-pyenv versions
-```
-
-`pyenv versions`で表示されたPythonバージョンの中から1つ選び、
-```sh
-pyenv global 3.12.10
-```
-
-```sh
-python -V
-```
-
-Pythonバージョンの表示例です。
-> 3.12.10
-
 ## Ansible 仮想環境の活性化
-start-codeでは、AnsibleはPython仮想環境にインストールされています。  
+start-codeでは、AnsibleをPython仮想環境にインストールしています。  
 Ansibleの仮想環境は、ホームディレクトリの`envs`ディレクトリ以下に作成されているので、Ansibleが使えるように仮想環境の活性化を行います。
 
 ```sh
-source ~/envs/ansible-2.17.11/bin/activate
+source ~/envs/ansible-2.17.11-on-python-3.12.8/bin/activate
 ```
 
 活性化後、`ansible`コマンドが使えることを確認します。
@@ -32,15 +14,22 @@ ansible --version
 ```
 
 バージョンの表示例です。
-> ansible [core 2.17.11]
->   config file = None
->   configured module search path = ['/Users/username/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
->   ansible python module location = /Users/username/envs/ansible-2.17.11/lib/python3.12/site-packages/ansible
->   ansible collection location = /Users/username/.ansible/collections:/usr/share/ansible/collections
->   executable location = /Users/username/envs/ansible-2.17.11/bin/ansible
->   python version = 3.12.8 (main, Jan 13 2025, 12:25:22) [Clang 14.0.3 (clang-1403.0.22.14.1)] (/Users/username/envs/ansible-2.17.11/bin/python3)
->   jinja version = 3.1.6
+> ansible [core 2.17.11]  
+>   config file = None  
+>   configured module search path = ['/Users/username/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']  
+>   ansible python module location = /Users/username/envs/ansible-2.17.11/lib/python3.12/site-packages/ansible  
+>   ansible collection location = /Users/username/.ansible/collections:/usr/share/ansible/collections  
+>   executable location = /Users/username/envs/ansible-2.17.11/bin/ansible  
+>   python version = 3.12.8 (main, Jan 13 2025, 12:25:22) [Clang 14.0.3 (clang-1403.0.22.14.1)] (/Users/username/envs/ansible-2.17.11/bin/python3)  
+>   jinja version = 3.1.6  
 >   libyaml = True
+
+なお、仮想環境を活性化すると、Pythonも`ansible.sh`実行時に指定したPython実行環境のバージョンに切り替わっています。
+```sh
+python -V
+```
+
+> Python 3.12.8
 
 ## Ansible コレクション・ロール管理
 Ansibleで外部ライブラリに相当するコレクションとロールは、`ansible-galaxy`ツールで管理可能です。

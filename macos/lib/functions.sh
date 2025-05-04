@@ -54,6 +54,29 @@ function assert_ansible_version() {
   fi
 }
 
+function assert_ansible_and_python_version() {
+  local ansible_version="$1"
+  local python_version="$2"
+  local timestamp=""
+
+  # Refs: https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html#ansible-core-support-matrix
+  # If Ansible version is 2.17, Python version sholud be 3.10-12
+  # If Ansible version is 2.18, Python version sholud be 3.11-13
+  if [[ $ansible_version =~ ^2\.17\.[0-9]+$ ]]; then
+    if [[ ! $python_version =~ ^3\.(10|11|12)\.[0-9]+$ ]]; then
+      timestamp=$(date "+%Y-%m-%d %H:%M:%S")
+      echo "[$timestamp] ERROR $SCRIPT_NAME: Ansible $ansible_version requires Python 3.10-12" >&2
+      exit 1
+    fi
+  elif [[ $ansible_version =~ ^2\.18\.[0-9]+$ ]]; then
+    if [[ ! $python_version =~ ^3\.(11|12|13)\.[0-9]+$ ]]; then
+      timestamp=$(date "+%Y-%m-%d %H:%M:%S")
+      echo "[$timestamp] ERROR $SCRIPT_NAME: Ansible $ansible_version requires Python 3.11-13" >&2
+      exit 1
+    fi
+  fi
+}
+
 function execute() {
   local start_msg="$1"
   local cmd="$2"
