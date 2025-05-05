@@ -45,7 +45,7 @@ git clone https://github.com/hotani3/start-code.git
 
 まだgitコマンドがインストール済みでないときは、[Releases](https://github.com/hotani3/start-code/releases)からZIPファイルをダウンロードし、展開します。
 ```sh
-unzip start-code-1.1.2.zip && mv start-code-1.1.2 start-code
+unzip start-code-1.2.0.zip && mv start-code-1.2.0 start-code
 ```
 
 次に、クローンまたはZIP展開したディレクトリに移動します。
@@ -129,7 +129,7 @@ ls ~/envs
 ansible-2.17.11-on-python-3.12.10
 ```
 
-インストールしたバージョンを選択して使用する方法については、[ansible.md](./docs/ansible.md)をご覧ください。
+インストールしたバージョンを選択して使用する方法については、[docs/ansible.md](./docs/ansible.md)をご覧ください。
 
 #### JavaScript
 ```sh

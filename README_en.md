@@ -1,3 +1,4 @@
+![Ansible on macOS](https://github.com/hotani3/start-code/actions/workflows/ansible-on-macos.yml/badge.svg)&emsp;
 ![JavaScript on macOS](https://github.com/hotani3/start-code/actions/workflows/javascript-on-macos.yml/badge.svg)&emsp;
 ![Python on macOS](https://github.com/hotani3/start-code/actions/workflows/python-on-macos.yml/badge.svg)
 
@@ -25,15 +26,16 @@ Table 1: Target Platforms
 | macOS | <ul><li>x86_64 (Intel Chip)</li><li>ARM64 (Apple Silicon)</li></ul> | <ul><li>Ventura (13)</li><li>Sonoma (14)</li><li>Sequoia (15)</li></ul> | zsh |
 
 ## Programming Language
-At present, these scripts are targeted for JavaScript and Python.
+At present, these scripts are targeted for Ansible, JavaScript and Python.
 
 The version control tool and package management tools for each language are as follows. One standard version control tool has been chosen for each language.
 
 Table 2: Target Programming Languages
 | Language | Version Control Tool | Runtime Version | Default Version | Package Management Tool |
 | :--- | :--- | :--- | :--- | :--- |
-| Javascript | nvm | Node.js 20, 22, 23 | 22.12.0 | npm |
-| Python | pyenv | 3.9.1 or higher, 3.10, 3.11, 3.12, 3.13 | 3.12.8 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
+| Ansible | venv | 2.17, 2.18 | 2.17.11 | ansible-galaxy |
+| Javascript | nvm | Node.js 20, 22, 23 | 22.15.0 | npm |
+| Python | pyenv | 3.9.1 or higher, 3.10, 3.11, 3.12, 3.13 | 3.12.10 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
 
 ## How to Execute
 First, open the macOS terminal and clone this repository.
@@ -43,7 +45,7 @@ git clone https://github.com/hotani3/start-code.git
 
 If the git command is not installed, download the ZIP file from [Releases](https://github.com/hotani3/start-code/releases) and extract it.
 ```sh
-unzip start-code-1.1.2.zip && mv start-code-1.1.2 start-code
+unzip start-code-1.2.0.zip && mv start-code-1.2.0 start-code
 ```
 
 Next, move to the directory that was cloned or extracted from the ZIP.
@@ -57,9 +59,23 @@ Be sure to run a script while you are in the "start-code" directory.
 You can specify a development or runtime environment version with the `-v` option.  
 If not specified, the default version in Table 2 will be installed.
 
+#### Ansible
+```sh
+./macos/install/ansible.sh -v 2.17.11 --python 3.12.10
+```
+
+In addition to `-v`, in Ansible, specify the version of the Python runtime environment with the `--python` option according to the following table.  
+If `--python` is omitted, the default Python version in Table 2 will be installed.
+
+Table 3: Correspondence between Ansible and Python versions
+| | Python 3.10 | 3.11 | 3.12 | 3.13 |
+| :--- | :---: | :---: | :---: | :---: |
+| Ansible 2.17 | ✅ | ✅ | ✅ | |
+| Ansible 2.18 | | ✅ | ✅ | ✅ |
+
 #### JavaScript
 ```sh
-./macos/install/javascript-node.sh -v 22.12.0
+./macos/install/javascript-node.sh -v 22.15.0
 ```
 
 In JavaScript, the `-v` option is the version of the Node.js runtime environment.  
@@ -67,7 +83,7 @@ In addition to the version number, you can also specify aliases such as `stable`
 
 #### Python
 ```sh
-./macos/install/python.sh -v 3.12.8
+./macos/install/python.sh -v 3.12.10
 ```
 
 Immediately after running the script, if you are prompted to enter a password as shown below, please enter your Mac login user's password.
@@ -77,22 +93,22 @@ Immediately after running the script, if you are prompted to enter a password as
 Wait a moment, and if the following log is output to the terminal, a development or runtime environment has been successfully installed.
 ```sh
 [2024-09-03 22:57:35] INFO python.sh: Successfully installed Python!
-[2024-09-03 22:57:36] INFO python.sh: Detected Python 3.12.8
+[2024-09-03 22:57:36] INFO python.sh: Detected Python 3.12.10
 ```
 
 If you want to manage packages with Pipenv or Poetry instead of Python's standard venv+pip, run the following script instead of `python.sh`.
 
 #### Pipenv
 ```sh
-./macos/install/python-pipenv.sh -v 3.12.8
+./macos/install/python-pipenv.sh -v 3.12.10
 ```
 
 #### Poetry
 ```sh
-./macos/install/python-poetry.sh -v 3.12.8
+./macos/install/python-poetry.sh -v 3.12.10
 ```
 
-In the above examples, Python 3.12.8 will be installed, and additionally, Pipenv or Poetry will also be installed.  
+In the above examples, Python 3.12.10 will be installed, and additionally, Pipenv or Poetry will also be installed.  
 In all cases, the `-v` option is for specifying the Python runtime environment version, not the version of Pipenv or Poetry.
 
 Please note that for Pipenv, it will be installed for both the version specified with `-v` and the currently selected version as specified by `pyenv global`.
@@ -104,6 +120,18 @@ source ~/.zshrc
 ```
 
 Finally, it is preferable to check the versions installed and currently selected with a version control tool.
+#### Ansible
+```sh
+ls ~/envs
+```
+
+Here is an example of what you see when you first install the Ansible runtime environment.
+```sh
+ansible-2.17.11-on-python-3.12.10
+```
+
+Please see [docs/ansible_en.md](./docs/ansible_en.md) for instructions on how to choose and use the version you installed.
+
 #### JavaScript
 ```sh
 nvm ls
@@ -111,9 +139,9 @@ nvm ls
 
 Here is an example of what you see when you first install the Node.js runtime environment.
 ```sh
-->     v22.12.0
+->     v22.15.0
          system
-default -> 22.12.0 (-> v22.12.0)
+default -> 22.15.0 (-> v22.15.0)
 [The rest is ommitted]
 ```
 
@@ -125,7 +153,7 @@ pyenv versions
 Here is an example of what you see when you first install the Python runtime environment.
 ```sh
   system
-* 3.12.8 (set by /Users/username/.pyenv/version)
+* 3.12.10 (set by /Users/username/.pyenv/version)
 ```
 
 ## Additional Notes: Packages and Configuration Files Added or Updated
@@ -133,7 +161,7 @@ When these scripts are executed, the following packages will be automatically do
 
 Additionally, the following configuration files will be automatically updated as necessary to configure environment variables and program execution paths.
 
-Table 3: Packages and Configuration Files to be Added or Updated
+Table 4: Packages and Configuration Files to be Added or Updated
 | Platform | Package | Configuration File |
 | :--- | :--- | :--- |
 | macOS | <ul><li>Xcode Command Line Tools</li><li>Homebrew</li><li>XZ Utils</li></ul> | <ul><li>\~/.zprofile</li><li>\~/.zshrc</li></ul> |

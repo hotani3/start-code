@@ -74,6 +74,6 @@ deactivate
 ```
 
 ## 参考情報
- - [Ansible best practices: using project-local collections and roles](https://www.jeffgeerling.com/blog/2020/ansible-best-practices-using-project-local-collections-and-roles)
- - [Galaxy User Guide](https://docs.ansible.com/ansible/latest/galaxy/user_guide.html)
- - [Ansible Configuration Settings](https://docs.ansible.com/ansible/latest/reference_appendices/config.html)
+- [Ansible best practices: using project-local collections and roles](https://www.jeffgeerling.com/blog/2020/ansible-best-practices-using-project-local-collections-and-roles)
+- [Galaxy User Guide](https://docs.ansible.com/ansible/latest/galaxy/user_guide.html)
+- [Ansible Configuration Settings](https://docs.ansible.com/ansible/latest/reference_appendices/config.html)
