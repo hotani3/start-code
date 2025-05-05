@@ -17,4 +17,12 @@ echo "[$timestamp] INFO $SCRIPT_NAME $SCRIPT_VERSION: Running on macOS $MACOS_VE
 # nvm.sh requires the git command in Xcode CLT installed by homebrew.sh
 source ./macos/lib/homebrew.sh
 source ./macos/lib/nvm.sh
+
+# Get -v option value as Node.js version number or alias
+while getopts v: OPT
+do
+  case $OPT in
+    v) NODE_VERSION_ALIAS=$OPTARG ;;
+  esac
+done
 source ./macos/lib/nvm-node.sh
