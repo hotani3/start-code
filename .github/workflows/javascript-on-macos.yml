@@ -107,9 +107,8 @@ jobs:
         run: |
           source ~/.zshrc
           nvm deactivate
-          versions=($(nvm ls --no-alias | grep -oE '[0-9]+\.[0-9]+\.[0-9]+'))
-          for version in $versions; do
-            nvm uninstall $version
+          nvm ls --no-alias | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | while read -r version; do
+            nvm uninstall "$version"
           done
       - name: Install Node.js LTS iron
         shell: zsh {0}
