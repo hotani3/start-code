@@ -1,3 +1,4 @@
+![Ansible on macOS](https://github.com/hotani3/start-code/actions/workflows/ansible-on-macos.yml/badge.svg)&emsp;
 ![JavaScript on macOS](https://github.com/hotani3/start-code/actions/workflows/javascript-on-macos.yml/badge.svg)&emsp;
 ![Python on macOS](https://github.com/hotani3/start-code/actions/workflows/python-on-macos.yml/badge.svg)
 
@@ -63,8 +64,14 @@ cd start-code
 ./macos/install/ansible.sh -v 2.17.11 --python 3.12.10
 ```
 
-Ansibleでは、`-v`に加えて、`--python`オプションでPython実行環境のバージョンを指定してください。  
-指定しなかった場合は、表2のデフォルトバージョンがインストールされます。
+Ansibleでは`-v`に加え、次の対応表に従って、`--python`オプションでPython実行環境のバージョンを指定してください。  
+`--python`を省略した場合、表2のPythonデフォルトバージョンがインストールされます。
+
+表3: AnsibleとPythonバージョンの対応
+| | Python 3.10 | 3.11 | 3.12 | 3.13 |
+| :--- | :---: | :---: | :---: | :---: |
+| Ansible 2.17 | ✅ | ✅ | ✅ | |
+| Ansible 2.18 | | ✅ | ✅ | ✅ |
 
 #### JavaScript
 ```sh
@@ -119,7 +126,7 @@ ls ~/envs
 
 初めてAnsible実行環境をインストールしたときの表示例です。
 ```sh
-ansible-2.17.11
+ansible-2.17.11-on-python-3.12.10
 ```
 
 インストールしたバージョンを選択して使用する方法については、[ansible.md](./docs/ansible.md)をご覧ください。
@@ -153,7 +160,7 @@ pyenv versions
 
 加えて、環境変数やプログラム実行パスの設定を行うため、必要に応じて以下の設定ファイルも自動更新されます。
 
-表3: 追加・更新対象のパッケージ・設定ファイル
+表4: 追加・更新対象のパッケージ・設定ファイル
 | プラットフォーム | パッケージ | 設定ファイル |
 | :--- | :--- | :--- |
 | macOS | <ul><li>Xcode Command Line Tools</li><li>Homebrew</li><li>XZ Utils</li></ul> | <ul><li>\~/.zprofile</li><li>\~/.zshrc</li></ul> |
