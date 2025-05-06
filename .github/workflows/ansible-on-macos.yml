@@ -1,0 +1,211 @@
+name: Ansible on macOS
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches-ignore:
+      - main
+  schedule:
+    - cron: '10 11 * * *'
+
+env:
+  # Overwrite the default shell to zsh
+  SHELL: /bin/zsh
+
+jobs:
+  test-on-macos-ventura-x86_64:
+    runs-on: macos-13
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Ansible 2.17.0 against supported Python versions
+      - name: Install Ansible 2.17.0 with Python 3.10.0
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.0 --python 3.10.0
+      - name: Install Ansible 2.17.0 with Python 3.10.17
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.0 --python 3.10.17
+      - name: Install Ansible 2.17.0 with Python 3.11.12
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.0 --python 3.11.12
+      - name: Install Ansible 2.17.0 with Python 3.12.10
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.0 --python 3.12.10
+
+      # Ansible 2.17.11 against supported Python versions
+      - name: Install Ansible 2.17.11 with Python 3.10.0
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.11 --python 3.10.0
+      - name: Install Ansible 2.17.11 with Python 3.10.17
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.11 --python 3.10.17
+      - name: Install Ansible 2.17.11 with Python 3.11.12
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.11 --python 3.11.12
+      - name: Install Ansible 2.17.11 with Python 3.12.10
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.11 --python 3.12.10
+
+      # Ansible 2.18.5 against supported Python versions
+      - name: Install Ansible 2.18.5 with Python 3.11.0
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.18.5 --python 3.11.0
+      - name: Install Ansible 2.18.5 with Python 3.11.12
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.18.5 --python 3.11.12
+      - name: Install Ansible 2.18.5 with Python 3.12.10
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.18.5 --python 3.12.10
+      - name: Install Ansible 2.18.5 with Python 3.13.3
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.18.5 --python 3.13.3
+      
+      - name: List all Ansible versions
+        shell: zsh {0}
+        run: |
+          ls ~/envs
+
+  test-on-macos-sonoma-arm64:
+    runs-on: macos-14
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Ansible 2.17.0
+      - name: Install Ansible 2.17.0 with Python 3.10.0
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.0 --python 3.10.0
+      - name: Install Ansible 2.17.0 with Python 3.10.17
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.0 --python 3.10.17
+      - name: Install Ansible 2.17.0 with Python 3.11.12
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.0 --python 3.11.12
+      - name: Install Ansible 2.17.0 with Python 3.12.10
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.0 --python 3.12.10
+
+      # Ansible 2.17.11
+      - name: Install Ansible 2.17.11 with Python 3.10.0
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.11 --python 3.10.0
+      - name: Install Ansible 2.17.11 with Python 3.10.17
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.11 --python 3.10.17
+      - name: Install Ansible 2.17.11 with Python 3.11.12
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.11 --python 3.11.12
+      - name: Install Ansible 2.17.11 with Python 3.12.10
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.11 --python 3.12.10
+
+      # Ansible 2.18.5
+      - name: Install Ansible 2.18.5 with Python 3.11.0
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.18.5 --python 3.11.0
+      - name: Install Ansible 2.18.5 with Python 3.11.12
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.18.5 --python 3.11.12
+      - name: Install Ansible 2.18.5 with Python 3.12.10
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.18.5 --python 3.12.10
+      - name: Install Ansible 2.18.5 with Python 3.13.3
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.18.5 --python 3.13.3
+
+      - name: List all Ansible versions
+        shell: zsh {0}
+        run: |
+          ls ~/envs
+
+  test-on-macos-sequoia-arm64:
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Ansible 2.17.0
+      - name: Install Ansible 2.17.0 with Python 3.10.0
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.0 --python 3.10.0
+      - name: Install Ansible 2.17.0 with Python 3.10.17
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.0 --python 3.10.17
+      - name: Install Ansible 2.17.0 with Python 3.11.12
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.0 --python 3.11.12
+      - name: Install Ansible 2.17.0 with Python 3.12.10
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.0 --python 3.12.10
+
+      # Ansible 2.17.11
+      - name: Install Ansible 2.17.11 with Python 3.10.0
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.11 --python 3.10.0
+      - name: Install Ansible 2.17.11 with Python 3.10.17
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.11 --python 3.10.17
+      - name: Install Ansible 2.17.11 with Python 3.11.12
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.11 --python 3.11.12
+      - name: Install Ansible 2.17.11 with Python 3.12.10
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.17.11 --python 3.12.10
+
+      # Ansible 2.18.5
+      - name: Install Ansible 2.18.5 with Python 3.11.0
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.18.5 --python 3.11.0
+      - name: Install Ansible 2.18.5 with Python 3.11.12
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.18.5 --python 3.11.12
+      - name: Install Ansible 2.18.5 with Python 3.12.10
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.18.5 --python 3.12.10
+      - name: Install Ansible 2.18.5 with Python 3.13.3
+        shell: zsh {0}
+        run: |
+          ./macos/install/ansible.sh -v 2.18.5 --python 3.13.3
+
+      - name: List all Ansible versions
+        shell: zsh {0}
+        run: |
+          ls ~/envs

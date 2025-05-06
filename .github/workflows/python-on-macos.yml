@@ -26,26 +26,26 @@ jobs:
         shell: zsh {0}
         run: |
           ./macos/install/python-pipenv.sh -v 3.9.1
-      - name: Install Python 3.9.21
+      - name: Install Python 3.9.22
         shell: zsh {0}
         run: |
-          ./macos/install/python-pipenv.sh -v 3.9.21
-      - name: Install Python 3.10.16
+          ./macos/install/python-pipenv.sh -v 3.9.22
+      - name: Install Python 3.10.17
         shell: zsh {0}
         run: |
-          ./macos/install/python-pipenv.sh -v 3.10.16
-      - name: Install Python 3.11.11
+          ./macos/install/python-pipenv.sh -v 3.10.17
+      - name: Install Python 3.11.12
         shell: zsh {0}
         run: |
-          ./macos/install/python-pipenv.sh -v 3.11.11
-      - name: Install Python 3.12.8
+          ./macos/install/python-pipenv.sh -v 3.11.12
+      - name: Install Python 3.12.10
         shell: zsh {0}
         run: |
-          ./macos/install/python-pipenv.sh -v 3.12.8
-      - name: Install Python 3.13.1
+          ./macos/install/python-pipenv.sh -v 3.12.10
+      - name: Install Python 3.13.3
         shell: zsh {0}
         run: |
-          ./macos/install/python-pipenv.sh -v 3.13.1
+          ./macos/install/python-pipenv.sh -v 3.13.3
       - name: List all Python versions
         shell: zsh {0}
         run: |
@@ -60,10 +60,10 @@ jobs:
         run: |
           curl -sSL https://install.python-poetry.org | python3 - --uninstall
           unlink $HOME/.local/bin/poetry
-      - name: Install Poetry bound with Python 3.13.1
+      - name: Install Poetry bound with Python 3.13.3
         shell: zsh {0}
         run: |
-          ./macos/install/python-poetry.sh -v 3.13.1
+          ./macos/install/python-poetry.sh -v 3.13.3
  
   test-on-macos-sonoma-arm64:
     runs-on: macos-14
@@ -77,26 +77,26 @@ jobs:
         shell: zsh {0}
         run: |
           ./macos/install/python-pipenv.sh -v 3.9.1
-      - name: Install Python 3.9.21
+      - name: Install Python 3.9.22
         shell: zsh {0}
         run: |
-          ./macos/install/python-pipenv.sh -v 3.9.21
-      - name: Install Python 3.10.16
+          ./macos/install/python-pipenv.sh -v 3.9.22
+      - name: Install Python 3.10.17
         shell: zsh {0}
         run: |
-          ./macos/install/python-pipenv.sh -v 3.10.16
-      - name: Install Python 3.11.11
+          ./macos/install/python-pipenv.sh -v 3.10.17
+      - name: Install Python 3.11.12
         shell: zsh {0}
         run: |
-          ./macos/install/python-pipenv.sh -v 3.11.11
-      - name: Install Python 3.12.8
+          ./macos/install/python-pipenv.sh -v 3.11.12
+      - name: Install Python 3.12.10
         shell: zsh {0}
         run: |
-          ./macos/install/python-pipenv.sh -v 3.12.8
-      - name: Install Python 3.13.1
+          ./macos/install/python-pipenv.sh -v 3.12.10
+      - name: Install Python 3.13.3
         shell: zsh {0}
         run: |
-          ./macos/install/python-pipenv.sh -v 3.13.1
+          ./macos/install/python-pipenv.sh -v 3.13.3
       - name: List all Python versions
         shell: zsh {0}
         run: |
@@ -111,7 +111,58 @@ jobs:
         run: |
           curl -sSL https://install.python-poetry.org | python3 - --uninstall
           unlink $HOME/.local/bin/poetry
-      - name: Install Poetry bound with Python 3.13.1
+      - name: Install Poetry bound with Python 3.13.3
         shell: zsh {0}
         run: |
-          ./macos/install/python-poetry.sh -v 3.13.1
+          ./macos/install/python-poetry.sh -v 3.13.3
+
+  test-on-macos-sequoia-arm64:
+    runs-on: macos-15
+    steps:
+      # Checkout this repo
+      - name: Checkout
+        uses: actions/checkout@v4
+      # Run the script using zsh
+      # 3.9.1 is the first version that supports Apple Silicon
+      - name: Install Python 3.9.1
+        shell: zsh {0}
+        run: |
+          ./macos/install/python-pipenv.sh -v 3.9.1
+      - name: Install Python 3.9.22
+        shell: zsh {0}
+        run: |
+          ./macos/install/python-pipenv.sh -v 3.9.22
+      - name: Install Python 3.10.17
+        shell: zsh {0}
+        run: |
+          ./macos/install/python-pipenv.sh -v 3.10.17
+      - name: Install Python 3.11.12
+        shell: zsh {0}
+        run: |
+          ./macos/install/python-pipenv.sh -v 3.11.12
+      - name: Install Python 3.12.10
+        shell: zsh {0}
+        run: |
+          ./macos/install/python-pipenv.sh -v 3.12.10
+      - name: Install Python 3.13.3
+        shell: zsh {0}
+        run: |
+          ./macos/install/python-pipenv.sh -v 3.13.3
+      - name: List all Python versions
+        shell: zsh {0}
+        run: |
+          source ~/.zshrc
+          pyenv versions
+      - name: Install Poetry bound with Python 3.9.1
+        shell: zsh {0}
+        run: |
+          ./macos/install/python-poetry.sh -v 3.9.1
+      - name: Uninstall Poetry
+        shell: zsh {0}
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 - --uninstall
+          unlink $HOME/.local/bin/poetry
+      - name: Install Poetry bound with Python 3.13.3
+        shell: zsh {0}
+        run: |
+          ./macos/install/python-poetry.sh -v 3.13.3

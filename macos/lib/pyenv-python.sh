@@ -1,13 +1,5 @@
 #!/bin/zsh
 
-# Get -v option value as Python version
-while getopts v: OPT
-do
-  case $OPT in
-    v) PYTHON_VERSION=$OPTARG ;;
-  esac
-done
-
 # If not specified in an arg, set default version
 if [ -z "$PYTHON_VERSION" ]; then
   PYTHON_VERSION=$DEFAULT_PYTHON_VERSION

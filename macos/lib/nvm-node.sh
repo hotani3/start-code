@@ -1,13 +1,5 @@
 #!/bin/zsh
 
-# Get -v option value as Node.js version number or alias
-while getopts v: OPT
-do
-  case $OPT in
-    v) NODE_VERSION_ALIAS=$OPTARG ;;
-  esac
-done
-
 # If not specified in an arg, set default version
 if [ -z "$NODE_VERSION_ALIAS" ]; then
   NODE_VERSION_ALIAS=$DEFAULT_NODE_VERSION

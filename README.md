@@ -1,3 +1,4 @@
+![Ansible on macOS](https://github.com/hotani3/start-code/actions/workflows/ansible-on-macos.yml/badge.svg)&emsp;
 ![JavaScript on macOS](https://github.com/hotani3/start-code/actions/workflows/javascript-on-macos.yml/badge.svg)&emsp;
 ![Python on macOS](https://github.com/hotani3/start-code/actions/workflows/python-on-macos.yml/badge.svg)
 
@@ -25,15 +26,16 @@ Here is English version of [README](./README_en.md).
 | macOS | <ul><li>x86_64 (Intel Chip)</li><li>ARM64 (Apple Silicon)</li></ul> | <ul><li>Ventura (13)</li><li>Sonoma (14)</li><li>Sequoia (15)</li></ul> | zsh |
 
 ## プログラミング言語
-現時点で、本スクリプトが対象としているプログラミング言語は、JavaScriptとPythonです。
+現時点で、本スクリプトが対象としているプログラミング言語は、Ansible, JavaScript, Pythonです。
 
 各言語のバージョン管理ツール、パッケージ管理ツールは次の通りです。バージョン管理ツールは、言語ごとに標準的なものを1つ選択しています。
 
 表2: 対象プログラミング言語
 | 言語 | バージョン管理ツール | 実行環境バージョン | デフォルトバージョン | パッケージ管理ツール |
 | :--- | :--- | :--- | :--- | :--- |
-| JavaScript | nvm | Node.js 20, 22, 23 | 22.12.0 | npm |
-| Python | pyenv | 3.9.1以上, 3.10, 3.11, 3.12, 3.13 | 3.12.8 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
+| Ansible | venv | 2.17, 2.18 | 2.17.11 | ansible-galaxy |
+| JavaScript | nvm | Node.js 20, 22, 23 | 22.15.0 | npm |
+| Python | pyenv | 3.9.1以上, 3.10, 3.11, 3.12, 3.13 | 3.12.10 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
 
 ## 実行方法
 まず最初に、macOSのターミナルを開き、本リポジトリをクローンします。
@@ -43,7 +45,7 @@ git clone https://github.com/hotani3/start-code.git
 
 まだgitコマンドがインストール済みでないときは、[Releases](https://github.com/hotani3/start-code/releases)からZIPファイルをダウンロードし、展開します。
 ```sh
-unzip start-code-1.1.2.zip && mv start-code-1.1.2 start-code
+unzip start-code-1.2.0.zip && mv start-code-1.2.0 start-code
 ```
 
 次に、クローンまたはZIP展開したディレクトリに移動します。
@@ -57,9 +59,23 @@ cd start-code
 `-v`オプションで開発・実行環境バージョンが指定可能です。  
 指定しなかった場合は、表2のデフォルトバージョンがインストールされます。
 
+#### Ansible
+```sh
+./macos/install/ansible.sh -v 2.17.11 --python 3.12.10
+```
+
+Ansibleでは`-v`に加え、次の対応表に従って、`--python`オプションでPython実行環境のバージョンを指定してください。  
+`--python`を省略した場合、表2のPythonデフォルトバージョンがインストールされます。
+
+表3: AnsibleとPythonバージョンの対応
+| | Python 3.10 | 3.11 | 3.12 | 3.13 |
+| :--- | :---: | :---: | :---: | :---: |
+| Ansible 2.17 | ✅ | ✅ | ✅ | |
+| Ansible 2.18 | | ✅ | ✅ | ✅ |
+
 #### JavaScript
 ```sh
-./macos/install/javascript-node.sh -v 22.12.0
+./macos/install/javascript-node.sh -v 22.15.0
 ```
 
 JavaScriptでは、`-v`オプションはNode.js実行環境のバージョンです。  
@@ -67,7 +83,7 @@ JavaScriptでは、`-v`オプションはNode.js実行環境のバージョン�
 
 #### Python
 ```sh
-./macos/install/python.sh -v 3.12.8
+./macos/install/python.sh -v 3.12.10
 ```
 
 スクリプト実行直後、次のようにパスワード入力を促されたときは、Macログインユーザーのパスワードを入力してください。
@@ -77,22 +93,22 @@ JavaScriptでは、`-v`オプションはNode.js実行環境のバージョン�
 しばらく待ち、ターミナルに以下のようなログが出力されれば、開発・実行環境のインストールに成功しています。
 ```sh
 [2024-09-03 22:57:35] INFO python.sh: Successfully installed Python!
-[2024-09-03 22:57:36] INFO python.sh: Detected Python 3.12.8
+[2024-09-03 22:57:36] INFO python.sh: Detected Python 3.12.10
 ```
 
 Python標準のvenv+pipではなく、PipenvやPoetryでパッケージ管理を行う場合は、`python.sh`の代わりに、次のスクリプトを実行してください。
 
 #### Pipenv
 ```sh
-./macos/install/python-pipenv.sh -v 3.12.8
+./macos/install/python-pipenv.sh -v 3.12.10
 ```
 
 #### Poetry
 ```sh
-./macos/install/python-poetry.sh -v 3.12.8
+./macos/install/python-poetry.sh -v 3.12.10
 ```
 
-上記の例では、Python 3.12.8がインストールされ、さらにPipenvまたはPoetryがインストールされます。  
+上記の例では、Python 3.12.10がインストールされ、さらにPipenvまたはPoetryがインストールされます。  
 いずれの場合も、`-v`オプションはPython実行環境のバージョンです。PipenvやPoetryのバージョンではないことに注意してください。
 
 なお、Pipenvは`-v`で指定されたバージョンに加えて、`pyenv global`で指定された現在選択中のバージョンにもインストールされます。
@@ -103,6 +119,18 @@ source ~/.zshrc
 ```
 
 最後に、バージョン管理ツールでインストールされたバージョン、および、現在選択中のバージョンを確認することをお勧めします。
+#### Ansible
+```sh
+ls ~/envs
+```
+
+初めてAnsible実行環境をインストールしたときの表示例です。
+```sh
+ansible-2.17.11-on-python-3.12.10
+```
+
+インストールしたバージョンを選択して使用する方法については、[docs/ansible.md](./docs/ansible.md)をご覧ください。
+
 #### JavaScript
 ```sh
 nvm ls
@@ -110,9 +138,9 @@ nvm ls
 
 初めてNode.js実行環境をインストールしたときの表示例です。
 ```sh
-->     v22.12.0
+->     v22.15.0
          system
-default -> 22.12.0 (-> v22.12.0)
+default -> 22.15.0 (-> v22.15.0)
 [後略]
 ```
 
@@ -124,7 +152,7 @@ pyenv versions
 初めてPython実行環境をインストールしたときの表示例です。
 ```sh
   system
-* 3.12.8 (set by /Users/username/.pyenv/version)
+* 3.12.10 (set by /Users/username/.pyenv/version)
 ```
 
 ## 補足説明：追加・更新されるパッケージと設定ファイル
@@ -132,7 +160,7 @@ pyenv versions
 
 加えて、環境変数やプログラム実行パスの設定を行うため、必要に応じて以下の設定ファイルも自動更新されます。
 
-表3: 追加・更新対象のパッケージ・設定ファイル
+表4: 追加・更新対象のパッケージ・設定ファイル
 | プラットフォーム | パッケージ | 設定ファイル |
 | :--- | :--- | :--- |
 | macOS | <ul><li>Xcode Command Line Tools</li><li>Homebrew</li><li>XZ Utils</li></ul> | <ul><li>\~/.zprofile</li><li>\~/.zshrc</li></ul> |
