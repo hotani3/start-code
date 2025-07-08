@@ -1,14 +1,20 @@
 # Functions.psm1
 
 # モジュール自身のファイル名をスクリプト名として保持
-$script:SCRIPT_NAME = Split-Path -Leaf $PSCommandPath
+# $script:ScriptName = Split-Path -Leaf $PSCommandPath
+
+$scriptName = Split-Path -Leaf $PSCommandPath
+Set-Variable -Name ScriptName `
+             -Value $scriptName `
+             -Scope Script `
+             -Option ReadOnly
 
 # Windows のバージョンを取得
 try {
     $script:WindowsVersion = (Get-CimInstance Win32_OperatingSystem).Version
 } catch {
     Write-Error "Failed to retrieve Windows version: $_"
-    exit 1
+    throw
 }
 
 # CPU アーキテクチャを取得
@@ -21,8 +27,8 @@ function Assert-VersionFormat {
     )
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
     if ($Version -notmatch '^[0-9]+\.[0-9]+\.[0-9]+$') {
-        Write-Error "[$timestamp] ERROR $SCRIPT_NAME: Invalid version format: $Version"
-        exit 1
+        Write-Error "[$timestamp] ERROR $script:ScriptName: Invalid version format: $Version"
+        throw
     }
 }
 
@@ -34,8 +40,8 @@ function Assert-NodeVersionAlias {
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
     if ((-not ($Version -match '^(stable|lts/\*|lts/iron|lts/jod)$')) -and
         (-not ($Version -match '^[0-9]+(\.[0-9]+){0,2}$'))) {
-        Write-Error "[$timestamp] ERROR $SCRIPT_NAME: Invalid version format: $Version"
-        exit 1
+        Write-Error "[$timestamp] ERROR $script:ScriptName: Invalid version format: $Version"
+        throw
     }
 }
 
@@ -75,8 +81,8 @@ function Assert-AnsibleVersion {
     )
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
     if ($Version -notmatch '^2\.(17|18)\.[0-9]+$') {
-        Write-Error "[$timestamp] ERROR $SCRIPT_NAME: Unsupported Ansible version: $Version"
-        exit 1
+        Write-Error "[$timestamp] ERROR $script:ScriptName: Unsupported Ansible version: $Version"
+        throw
     }
 }
 
@@ -90,14 +96,14 @@ function Assert-AnsibleAndPythonVersion {
 
     if ($AnsibleVersion -match '^2\.17\.[0-9]+$') {
         if ($PythonVersion -notmatch '^3\.(10|11|12)\.[0-9]+$') {
-            Write-Error "[$timestamp] ERROR $SCRIPT_NAME: Ansible $AnsibleVersion requires Python 3.10-12"
-            exit 1
+            Write-Error "[$timestamp] ERROR $script:ScriptName: Ansible $AnsibleVersion requires Python 3.10-12"
+            throw
         }
     }
     elseif ($AnsibleVersion -match '^2\.18\.[0-9]+$') {
         if ($PythonVersion -notmatch '^3\.(11|12|13)\.[0-9]+$') {
-            Write-Error "[$timestamp] ERROR $SCRIPT_NAME: Ansible $AnsibleVersion requires Python 3.11-13"
-            exit 1
+            Write-Error "[$timestamp] ERROR $script:ScriptName: Ansible $AnsibleVersion requires Python 3.11-13"
+            throw
         }
     }
 }
@@ -110,12 +116,15 @@ function Execute {
         [Parameter(Mandatory)][string]$ErrorMessage
     )
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    Write-Host "[$timestamp] INFO $SCRIPT_NAME: $StartMessage"
+    Write-Host "[$timestamp] INFO $script:ScriptName: $StartMessage"
     Invoke-Expression $Command
-    if ($LASTEXITCODE -ne 0) {
+    if ($LASTEXITCODE -eq 0) {
+        return 0
+    }
+    else {
         $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-        Write-Error "[$timestamp] ERROR $SCRIPT_NAME: $ErrorMessage"
-        exit 1
+        Write-Error "[$timestamp] ERROR $script:ScriptName: $ErrorMessage"
+        throw
     }
 }
 
@@ -147,17 +156,17 @@ function Detect {
     if ($LASTEXITCODE -eq 0) {
         $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
         $version = Invoke-Expression $VersionCommand
-        Write-Host "[$timestamp] INFO $SCRIPT_NAME: Detected $PackageTitle $version"
+        Write-Host "[$timestamp] INFO $script:ScriptName: Detected $PackageTitle $version"
         return 0
     }
     else {
         $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
         if ($ExitOnFail) {
-            Write-Error "[$timestamp] ERROR $SCRIPT_NAME: Failed to detect $PackageTitle"
-            exit 1
+            Write-Error "[$timestamp] ERROR $script:ScriptName: Failed to detect $PackageTitle"
+            throw
         }
         else {
-            Write-Host "[$timestamp] WARN  $SCRIPT_NAME: Failed to detect $PackageTitle"
+            Write-Host "[$timestamp] WARN  $script:ScriptName: Failed to detect $PackageTitle"
             return 1
         }
     }
@@ -170,16 +179,16 @@ function Install {
         [Parameter(Mandatory)][string]$InstallCommand
     )
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    Write-Host "[$timestamp] INFO $SCRIPT_NAME: Installing $PackageTitle..."
+    Write-Host "[$timestamp] INFO $script:ScriptName: Installing $PackageTitle..."
     Invoke-Expression $InstallCommand
     if ($LASTEXITCODE -eq 0) {
         $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-        Write-Host "[$timestamp] INFO $SCRIPT_NAME: Successfully installed $PackageTitle!"
+        Write-Host "[$timestamp] INFO $script:ScriptName: Successfully installed $PackageTitle!"
     }
     else {
         $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-        Write-Error "[$timestamp] ERROR $SCRIPT_NAME: Failed to install $PackageTitle"
-        exit 1
+        Write-Error "[$timestamp] ERROR $script:ScriptName: Failed to install $PackageTitle"
+        throw
     }
 }
 

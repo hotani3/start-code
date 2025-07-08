@@ -1,7 +1,11 @@
-# Constants.Tests.ps1
-# Pester tests for Constants.psm1 (requires Pester 3.4.0)
+<#
+.SYNOPSIS
+    Pester tests for Constants.psm1
+.DESCRIPTION
+    Unit tests for each constant using Pester v3.4.0
+#>
 
-Describe 'Constants module' {
+Describe 'Test Constants.psm1' {
 
     # Load the module under test
     BeforeAll {
