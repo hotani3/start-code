@@ -152,7 +152,7 @@ function Detect {
         [switch]$ExitOnFail
     )
     # 検出コマンドを実行
-    Invoke-Expression $DetectCommand
+    $result = Invoke-Expression $DetectCommand
     if ($LASTEXITCODE -eq 0) {
         $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
         $version = Invoke-Expression $VersionCommand
@@ -180,10 +180,11 @@ function Install {
     )
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
     Write-Host "[$timestamp] INFO $script:ScriptName: Installing $PackageTitle..."
-    Invoke-Expression $InstallCommand
+    $result = Invoke-Expression $InstallCommand
     if ($LASTEXITCODE -eq 0) {
         $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
         Write-Host "[$timestamp] INFO $script:ScriptName: Successfully installed $PackageTitle!"
+        return 0
     }
     else {
         $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
