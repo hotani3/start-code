@@ -117,7 +117,7 @@ function Execute {
     )
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
     Write-Host "[$timestamp] INFO $script:ScriptName: $StartMessage"
-    Invoke-Expression $Command
+    $result = Invoke-Expression $Command
     if ($LASTEXITCODE -eq 0) {
         return 0
     }
