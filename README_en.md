@@ -23,7 +23,7 @@ Currently, the only platform that has been tested is macOS.
 Table 1: Target Platforms
 | Platform | CPU Architecture | OS Version | Shell |
 | :--- | :--- | :--- | :--- |
-| macOS | <ul><li>x86_64 (Intel Chip)</li><li>ARM64 (Apple Silicon)</li></ul> | <ul><li>Ventura (13)</li><li>Sonoma (14)</li><li>Sequoia (15)</li></ul> | zsh |
+| macOS | <ul><li>x86_64 (Intel Chip)</li><li>ARM64 (Apple Silicon)</li></ul> | <ul><li>Sonoma (14)</li><li>Sequoia (15)</li><li>Tahoe (26)</li></ul> | zsh |
 
 ## Programming Language
 At present, these scripts are targeted for Ansible, JavaScript and Python.
@@ -33,9 +33,9 @@ The version control tool and package management tools for each language are as f
 Table 2: Target Programming Languages
 | Language | Version Control Tool | Runtime Version | Default Version | Package Management Tool |
 | :--- | :--- | :--- | :--- | :--- |
-| Ansible | venv | 2.17, 2.18 | 2.17.11 | ansible-galaxy |
-| Javascript | nvm | Node.js 20, 22, 23 | 22.15.0 | npm |
-| Python | pyenv | 3.9.1 or higher, 3.10, 3.11, 3.12, 3.13 | 3.12.10 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
+| Ansible | venv | 2.17-19 | 2.18.10 | ansible-galaxy |
+| Javascript | nvm | Node.js 20, 22, 24 | 22.20.0 | npm |
+| Python | pyenv | 3.9.1 or higher, 3.10-14 | 3.12.12 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
 
 ## How to Execute
 First, open the macOS terminal and clone this repository.
@@ -45,7 +45,7 @@ git clone https://github.com/hotani3/start-code.git
 
 If the git command is not installed, download the ZIP file from [Releases](https://github.com/hotani3/start-code/releases) and extract it.
 ```sh
-unzip start-code-1.2.0.zip && mv start-code-1.2.0 start-code
+unzip start-code-1.2.1.zip && mv start-code-1.2.1 start-code
 ```
 
 Next, move to the directory that was cloned or extracted from the ZIP.
@@ -61,7 +61,7 @@ If not specified, the default version in Table 2 will be installed.
 
 #### Ansible
 ```sh
-./macos/install/ansible.sh -v 2.17.11 --python 3.12.10
+./macos/install/ansible.sh -v 2.18.10 --python 3.12.12
 ```
 
 In addition to `-v`, in Ansible, specify the version of the Python runtime environment with the `--python` option according to the following table.  
@@ -72,10 +72,11 @@ Table 3: Correspondence between Ansible and Python versions
 | :--- | :---: | :---: | :---: | :---: |
 | Ansible 2.17 | ✅ | ✅ | ✅ | |
 | Ansible 2.18 | | ✅ | ✅ | ✅ |
+| Ansible 2.19 | | ✅ | ✅ | ✅ |
 
 #### JavaScript
 ```sh
-./macos/install/javascript-node.sh -v 22.15.0
+./macos/install/javascript-node.sh -v 22.20.0
 ```
 
 In JavaScript, the `-v` option is the version of the Node.js runtime environment.  
@@ -83,7 +84,7 @@ In addition to the version number, you can also specify aliases such as `stable`
 
 #### Python
 ```sh
-./macos/install/python.sh -v 3.12.10
+./macos/install/python.sh -v 3.12.12
 ```
 
 Immediately after running the script, if you are prompted to enter a password as shown below, please enter your Mac login user's password.
@@ -92,23 +93,23 @@ Immediately after running the script, if you are prompted to enter a password as
 
 Wait a moment, and if the following log is output to the terminal, a development or runtime environment has been successfully installed.
 ```sh
-[2024-09-03 22:57:35] INFO python.sh: Successfully installed Python!
-[2024-09-03 22:57:36] INFO python.sh: Detected Python 3.12.10
+[2025-10-12 22:57:35] INFO python.sh: Successfully installed Python!
+[2025-10-12 22:57:36] INFO python.sh: Detected Python 3.12.12
 ```
 
 If you want to manage packages with Pipenv or Poetry instead of Python's standard venv+pip, run the following script instead of `python.sh`.
 
 #### Pipenv
 ```sh
-./macos/install/python-pipenv.sh -v 3.12.10
+./macos/install/python-pipenv.sh -v 3.12.12
 ```
 
 #### Poetry
 ```sh
-./macos/install/python-poetry.sh -v 3.12.10
+./macos/install/python-poetry.sh -v 3.12.12
 ```
 
-In the above examples, Python 3.12.10 will be installed, and additionally, Pipenv or Poetry will also be installed.  
+In the above examples, Python 3.12.12 will be installed, and additionally, Pipenv or Poetry will also be installed.  
 In all cases, the `-v` option is for specifying the Python runtime environment version, not the version of Pipenv or Poetry.
 
 Please note that for Pipenv, it will be installed for both the version specified with `-v` and the currently selected version as specified by `pyenv global`.
@@ -127,7 +128,7 @@ ls ~/envs
 
 Here is an example of what you see when you first install the Ansible runtime environment.
 ```sh
-ansible-2.17.11-on-python-3.12.10
+ansible-2.18.10-on-python-3.12.12
 ```
 
 Please see [docs/ansible_en.md](./docs/ansible_en.md) for instructions on how to choose and use the version you installed.
@@ -139,9 +140,9 @@ nvm ls
 
 Here is an example of what you see when you first install the Node.js runtime environment.
 ```sh
-->     v22.15.0
+->     v22.20.0
          system
-default -> 22.15.0 (-> v22.15.0)
+default -> 22.20.0 (-> v22.20.0)
 [The rest is ommitted]
 ```
 
@@ -153,7 +154,7 @@ pyenv versions
 Here is an example of what you see when you first install the Python runtime environment.
 ```sh
   system
-* 3.12.10 (set by /Users/username/.pyenv/version)
+* 3.12.12 (set by /Users/username/.pyenv/version)
 ```
 
 ## Additional Notes: Packages and Configuration Files Added or Updated
