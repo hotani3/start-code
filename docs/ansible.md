@@ -5,7 +5,7 @@ start-codeでは、AnsibleをPython仮想環境にインストールしていま
 Ansibleの仮想環境は、ホームディレクトリの`envs`ディレクトリ以下に作成されているので、Ansibleが使えるように仮想環境の活性化を行います。
 
 ```sh
-source ~/envs/ansible-2.17.11-on-python-3.12.10/bin/activate
+source ~/envs/ansible-2.18.10-on-python-3.12.12/bin/activate
 ```
 
 活性化後、`ansible`コマンドが使えることを確認します。
@@ -14,13 +14,13 @@ ansible --version
 ```
 
 バージョンの表示例です。
-> ansible [core 2.17.11]  
+> ansible [core 2.18.10]  
 >   config file = None  
 >   configured module search path = ['/Users/username/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']  
->   ansible python module location = /Users/username/envs/ansible-2.17.11-on-python-3.12.10/lib/python3.12/site-packages/ansible  
+>   ansible python module location = /Users/username/envs/ansible-2.18.10-on-python-3.12.12/lib/python3.12/site-packages/ansible  
 >   ansible collection location = /Users/username/.ansible/collections:/usr/share/ansible/collections  
->   executable location = /Users/username/envs/ansible-2.17.11-on-python-3.12.10/bin/ansible  
->   python version = 3.12.10 (main, May  5 2025, 15:25:53) [Clang 14.0.3 (clang-1403.0.22.14.1)] (/Users/username/envs/ansible-2.17.11-on-python-3.12.10/bin/python3)  
+>   executable location = /Users/username/envs/ansible-2.18.10-on-python-3.12.12/bin/ansible  
+>   python version = 3.12.12 (main, Oct 13 2025, 14:14:27) [Clang 15.0.0 (clang-1500.3.9.4)] (/Users/username/envs/ansible-2.18.10-on-python-3.12.12/bin/python3)  
 >   jinja version = 3.1.6  
 >   libyaml = True
 
@@ -29,7 +29,7 @@ ansible --version
 python -V
 ```
 
-> Python 3.12.10
+> Python 3.12.12
 
 ## Ansible コレクション・ロール管理
 Ansibleで外部ライブラリに相当するコレクションとロールは、`ansible-galaxy`ツールで管理可能です。
