@@ -9,14 +9,15 @@ on:
       - main
   schedule:
     - cron: '40 10 * * *'
+  workflow_dispatch:
 
 env:
   # Overwrite the default shell to zsh
   SHELL: /bin/zsh
 
 jobs:
-  test-on-macos-ventura-x86_64:
-    runs-on: macos-13
+  test-on-macos-sonoma-arm64:
+    runs-on: macos-14
     steps:
       # Checkout this repo
       - name: Checkout
@@ -26,18 +27,18 @@ jobs:
         shell: zsh {0}
         run: |
           ./macos/install/javascript-node.sh -v 20.0.0
-      - name: Install Node.js 20.19.1
+      - name: Install Node.js 20.19.5
         shell: zsh {0}
         run: |
-          ./macos/install/javascript-node.sh -v 20.19.1
-      - name: Install Node.js 22.15.0
+          ./macos/install/javascript-node.sh -v 20.19.5
+      - name: Install Node.js 22.20.0
         shell: zsh {0}
         run: |
-          ./macos/install/javascript-node.sh -v 22.15.0
-      - name: Install Node.js 23.11.0
+          ./macos/install/javascript-node.sh -v 22.20.0
+      - name: Install Node.js 24.10.0
         shell: zsh {0}
         run: |
-          ./macos/install/javascript-node.sh -v 23.11.0
+          ./macos/install/javascript-node.sh -v 24.10.0
       - name: List all Node.js versions
         shell: zsh {0}
         run: |
@@ -73,9 +74,9 @@ jobs:
         run: |
           source ~/.zshrc
           nvm ls
-  
-  test-on-macos-sonoma-arm64:
-    runs-on: macos-14
+
+  test-on-macos-sequoia-arm64:
+    runs-on: macos-15
     steps:
       # Checkout this repo
       - name: Checkout
@@ -85,18 +86,18 @@ jobs:
         shell: zsh {0}
         run: |
           ./macos/install/javascript-node.sh -v 20.0.0
-      - name: Install Node.js 20.19.1
+      - name: Install Node.js 20.19.5
         shell: zsh {0}
         run: |
-          ./macos/install/javascript-node.sh -v 20.19.1
-      - name: Install Node.js 22.15.0
+          ./macos/install/javascript-node.sh -v 20.19.5
+      - name: Install Node.js 22.20.0
         shell: zsh {0}
         run: |
-          ./macos/install/javascript-node.sh -v 22.15.0
-      - name: Install Node.js 23.11.0
+          ./macos/install/javascript-node.sh -v 22.20.0
+      - name: Install Node.js 24.10.0
         shell: zsh {0}
         run: |
-          ./macos/install/javascript-node.sh -v 23.11.0
+          ./macos/install/javascript-node.sh -v 24.10.0
       - name: List all Node.js versions
         shell: zsh {0}
         run: |
@@ -107,8 +108,9 @@ jobs:
         run: |
           source ~/.zshrc
           nvm deactivate
-          nvm ls --no-alias | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | while read -r version; do
-            nvm uninstall "$version"
+          versions=($(nvm ls --no-alias | grep -oE '[0-9]+\.[0-9]+\.[0-9]+'))
+          for version in $versions; do
+            nvm uninstall $version
           done
       - name: Install Node.js LTS iron
         shell: zsh {0}
@@ -132,8 +134,8 @@ jobs:
           source ~/.zshrc
           nvm ls
 
-  test-on-macos-sequoia-arm64:
-    runs-on: macos-15
+  test-on-macos-sequoia-x86_64:
+    runs-on: macos-15-intel
     steps:
       # Checkout this repo
       - name: Checkout
@@ -143,18 +145,77 @@ jobs:
         shell: zsh {0}
         run: |
           ./macos/install/javascript-node.sh -v 20.0.0
-      - name: Install Node.js 20.19.1
+      - name: Install Node.js 20.19.5
         shell: zsh {0}
         run: |
-          ./macos/install/javascript-node.sh -v 20.19.1
-      - name: Install Node.js 22.15.0
+          ./macos/install/javascript-node.sh -v 20.19.5
+      - name: Install Node.js 22.20.0
         shell: zsh {0}
         run: |
-          ./macos/install/javascript-node.sh -v 22.15.0
-      - name: Install Node.js 23.11.0
+          ./macos/install/javascript-node.sh -v 22.20.0
+      - name: Install Node.js 24.10.0
         shell: zsh {0}
         run: |
-          ./macos/install/javascript-node.sh -v 23.11.0
+          ./macos/install/javascript-node.sh -v 24.10.0
+      - name: List all Node.js versions
+        shell: zsh {0}
+        run: |
+          source ~/.zshrc
+          nvm ls
+      - name: Uninstall all versions
+        shell: zsh {0}
+        run: |
+          source ~/.zshrc
+          nvm deactivate
+          versions=($(nvm ls --no-alias | grep -oE '[0-9]+\.[0-9]+\.[0-9]+'))
+          for version in $versions; do
+            nvm uninstall $version
+          done
+      - name: Install Node.js LTS iron
+        shell: zsh {0}
+        run: |
+          ./macos/install/javascript-node.sh -v lts/iron
+      - name: Install Node.js LTS jod
+        shell: zsh {0}
+        run: |
+          ./macos/install/javascript-node.sh -v lts/jod
+      - name: Install Node.js LTS latest
+        shell: zsh {0}
+        run: |
+          ./macos/install/javascript-node.sh -v 'lts/*'
+      - name: Install Node.js stable version
+        shell: zsh {0}
+        run: |
+          ./macos/install/javascript-node.sh -v stable
+      - name: List Node.js aliases
+        shell: zsh {0}
+        run: |
+          source ~/.zshrc
+          nvm ls
+
+  test-on-macos-tahoe-arm64:
+    runs-on: macos-26
+    steps:
+      # Checkout this repo
+      - name: Checkout
+        uses: actions/checkout@v4
+      # Run the script using zsh
+      - name: Install Node.js 20.0.0
+        shell: zsh {0}
+        run: |
+          ./macos/install/javascript-node.sh -v 20.0.0
+      - name: Install Node.js 20.19.5
+        shell: zsh {0}
+        run: |
+          ./macos/install/javascript-node.sh -v 20.19.5
+      - name: Install Node.js 22.20.0
+        shell: zsh {0}
+        run: |
+          ./macos/install/javascript-node.sh -v 22.20.0
+      - name: Install Node.js 24.10.0
+        shell: zsh {0}
+        run: |
+          ./macos/install/javascript-node.sh -v 24.10.0
       - name: List all Node.js versions
         shell: zsh {0}
         run: |

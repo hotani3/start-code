@@ -23,7 +23,7 @@ Here is English version of [README](./README_en.md).
 表1: 対象プラットフォーム
 | プラットフォーム | CPUアーキテクチャー | OSバージョン | シェル |
 | :--- | :--- | :--- | :--- |
-| macOS | <ul><li>x86_64 (Intel Chip)</li><li>ARM64 (Apple Silicon)</li></ul> | <ul><li>Ventura (13)</li><li>Sonoma (14)</li><li>Sequoia (15)</li></ul> | zsh |
+| macOS | <ul><li>x86_64 (Intel Chip)</li><li>ARM64 (Apple Silicon)</li></ul> | <ul><li>Sonoma (14)</li><li>Sequoia (15)</li><li>Tahoe (26)</li></ul> | zsh |
 
 ## プログラミング言語
 現時点で、本スクリプトが対象としているプログラミング言語は、Ansible, JavaScript, Pythonです。
@@ -33,9 +33,9 @@ Here is English version of [README](./README_en.md).
 表2: 対象プログラミング言語
 | 言語 | バージョン管理ツール | 実行環境バージョン | デフォルトバージョン | パッケージ管理ツール |
 | :--- | :--- | :--- | :--- | :--- |
-| Ansible | venv | 2.17, 2.18 | 2.17.11 | ansible-galaxy |
-| JavaScript | nvm | Node.js 20, 22, 23 | 22.15.0 | npm |
-| Python | pyenv | 3.9.1以上, 3.10, 3.11, 3.12, 3.13 | 3.12.10 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
+| Ansible | venv | 2.17-19 | 2.18.10 | ansible-galaxy |
+| JavaScript | nvm | Node.js 20, 22, 24 | 22.20.0 | npm |
+| Python | pyenv | 3.9.1以上, 3.10-14 | 3.12.12 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
 
 ## 実行方法
 まず最初に、macOSのターミナルを開き、本リポジトリをクローンします。
@@ -45,7 +45,7 @@ git clone https://github.com/hotani3/start-code.git
 
 まだgitコマンドがインストール済みでないときは、[Releases](https://github.com/hotani3/start-code/releases)からZIPファイルをダウンロードし、展開します。
 ```sh
-unzip start-code-1.2.0.zip && mv start-code-1.2.0 start-code
+unzip start-code-1.2.1.zip && mv start-code-1.2.1 start-code
 ```
 
 次に、クローンまたはZIP展開したディレクトリに移動します。
@@ -61,7 +61,7 @@ cd start-code
 
 #### Ansible
 ```sh
-./macos/install/ansible.sh -v 2.17.11 --python 3.12.10
+./macos/install/ansible.sh -v 2.18.10 --python 3.12.12
 ```
 
 Ansibleでは`-v`に加え、次の対応表に従って、`--python`オプションでPython実行環境のバージョンを指定してください。  
@@ -72,10 +72,11 @@ Ansibleでは`-v`に加え、次の対応表に従って、`--python`オプシ�
 | :--- | :---: | :---: | :---: | :---: |
 | Ansible 2.17 | ✅ | ✅ | ✅ | |
 | Ansible 2.18 | | ✅ | ✅ | ✅ |
+| Ansible 2.19 | | ✅ | ✅ | ✅ |
 
 #### JavaScript
 ```sh
-./macos/install/javascript-node.sh -v 22.15.0
+./macos/install/javascript-node.sh -v 22.20.0
 ```
 
 JavaScriptでは、`-v`オプションはNode.js実行環境のバージョンです。  
@@ -83,7 +84,7 @@ JavaScriptでは、`-v`オプションはNode.js実行環境のバージョン�
 
 #### Python
 ```sh
-./macos/install/python.sh -v 3.12.10
+./macos/install/python.sh -v 3.12.12
 ```
 
 スクリプト実行直後、次のようにパスワード入力を促されたときは、Macログインユーザーのパスワードを入力してください。
@@ -92,23 +93,23 @@ JavaScriptでは、`-v`オプションはNode.js実行環境のバージョン�
 
 しばらく待ち、ターミナルに以下のようなログが出力されれば、開発・実行環境のインストールに成功しています。
 ```sh
-[2024-09-03 22:57:35] INFO python.sh: Successfully installed Python!
-[2024-09-03 22:57:36] INFO python.sh: Detected Python 3.12.10
+[2025-10-12 22:57:35] INFO python.sh: Successfully installed Python!
+[2025-10-12 22:57:36] INFO python.sh: Detected Python 3.12.12
 ```
 
 Python標準のvenv+pipではなく、PipenvやPoetryでパッケージ管理を行う場合は、`python.sh`の代わりに、次のスクリプトを実行してください。
 
 #### Pipenv
 ```sh
-./macos/install/python-pipenv.sh -v 3.12.10
+./macos/install/python-pipenv.sh -v 3.12.12
 ```
 
 #### Poetry
 ```sh
-./macos/install/python-poetry.sh -v 3.12.10
+./macos/install/python-poetry.sh -v 3.12.12
 ```
 
-上記の例では、Python 3.12.10がインストールされ、さらにPipenvまたはPoetryがインストールされます。  
+上記の例では、Python 3.12.12がインストールされ、さらにPipenvまたはPoetryがインストールされます。  
 いずれの場合も、`-v`オプションはPython実行環境のバージョンです。PipenvやPoetryのバージョンではないことに注意してください。
 
 なお、Pipenvは`-v`で指定されたバージョンに加えて、`pyenv global`で指定された現在選択中のバージョンにもインストールされます。
@@ -126,7 +127,7 @@ ls ~/envs
 
 初めてAnsible実行環境をインストールしたときの表示例です。
 ```sh
-ansible-2.17.11-on-python-3.12.10
+ansible-2.18.10-on-python-3.12.12
 ```
 
 インストールしたバージョンを選択して使用する方法については、[docs/ansible.md](./docs/ansible.md)をご覧ください。
@@ -138,9 +139,9 @@ nvm ls
 
 初めてNode.js実行環境をインストールしたときの表示例です。
 ```sh
-->     v22.15.0
+->     v22.20.0
          system
-default -> 22.15.0 (-> v22.15.0)
+default -> 22.20.0 (-> v22.20.0)
 [後略]
 ```
 
@@ -152,7 +153,7 @@ pyenv versions
 初めてPython実行環境をインストールしたときの表示例です。
 ```sh
   system
-* 3.12.10 (set by /Users/username/.pyenv/version)
+* 3.12.12 (set by /Users/username/.pyenv/version)
 ```
 
 ## 補足説明：追加・更新されるパッケージと設定ファイル

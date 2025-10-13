@@ -47,7 +47,7 @@ function assert_ansible_version() {
   local timestamp=""
 
   # Refs: https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html#ansible-core-support-matrix
-  if [[ ! $version =~ ^2\.(17|18)\.[0-9]+$ ]]; then
+  if [[ ! $version =~ ^2\.(17|18|19)\.[0-9]+$ ]]; then
     timestamp=$(date "+%Y-%m-%d %H:%M:%S")
     echo "[$timestamp] ERROR $SCRIPT_NAME: Unsupported Ansible version: $version" >&2
     exit 1
@@ -60,15 +60,15 @@ function assert_ansible_and_python_version() {
   local timestamp=""
 
   # Refs: https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html#ansible-core-support-matrix
-  # If Ansible version is 2.17, Python version sholud be 3.10-12
-  # If Ansible version is 2.18, Python version sholud be 3.11-13
+  # If Ansible version is 2.17, Python version should be 3.10-12
+  # If Ansible version is 2.18 or 2.19, Python version should be 3.11-13
   if [[ $ansible_version =~ ^2\.17\.[0-9]+$ ]]; then
     if [[ ! $python_version =~ ^3\.(10|11|12)\.[0-9]+$ ]]; then
       timestamp=$(date "+%Y-%m-%d %H:%M:%S")
       echo "[$timestamp] ERROR $SCRIPT_NAME: Ansible $ansible_version requires Python 3.10-12" >&2
       exit 1
     fi
-  elif [[ $ansible_version =~ ^2\.18\.[0-9]+$ ]]; then
+  elif [[ $ansible_version =~ ^2\.(18|19)\.[0-9]+$ ]]; then
     if [[ ! $python_version =~ ^3\.(11|12|13)\.[0-9]+$ ]]; then
       timestamp=$(date "+%Y-%m-%d %H:%M:%S")
       echo "[$timestamp] ERROR $SCRIPT_NAME: Ansible $ansible_version requires Python 3.11-13" >&2
