@@ -38,7 +38,7 @@ function Assert-NodeVersionAlias {
         [Parameter(Mandatory)][string]$Version
     )
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    if ((-not ($Version -match '^(stable|lts/\*|lts/iron|lts/jod)$')) -and
+    if ((-not ($Version -match '^(stable|lts/\*|lts/iron|lts/jod|lts/krypton)$')) -and
         (-not ($Version -match '^[0-9]+(\.[0-9]+){0,2}$'))) {
         Write-Error "[$timestamp] ERROR $script:ScriptName: Invalid version format: $Version"
         throw
@@ -60,7 +60,7 @@ function Resolve-NodeVersion {
                    Select-Object -Last 1 |
                    ForEach-Object { $_.Value }
     }
-    elseif ($Alias -match '^(lts/\*|lts/iron|lts/jod)$' -or $Alias -match '^[0-9]+(\.[0-9]+){0,1}$') {
+    elseif ($Alias -match '^(lts/\*|lts/iron|lts/jod|lts/krypton)$' -or $Alias -match '^[0-9]+(\.[0-9]+){0,1}$') {
         $version = nvm ls-remote --no-colors $Alias |
                    Select-String -Pattern '[0-9]+\.[0-9]+\.[0-9]+' |
                    ForEach-Object { $_.Matches } |
@@ -80,7 +80,7 @@ function Assert-AnsibleVersion {
         [Parameter(Mandatory)][string]$Version
     )
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    if ($Version -notmatch '^2\.(17|18)\.[0-9]+$') {
+    if ($Version -notmatch '^2\.(17|18|19)\.[0-9]+$') {
         Write-Error "[$timestamp] ERROR $script:ScriptName: Unsupported Ansible version: $Version"
         throw
     }
@@ -100,7 +100,7 @@ function Assert-AnsibleAndPythonVersion {
             throw
         }
     }
-    elseif ($AnsibleVersion -match '^2\.18\.[0-9]+$') {
+    elseif ($AnsibleVersion -match '^2\.(18|19)\.[0-9]+$') {
         if ($PythonVersion -notmatch '^3\.(11|12|13)\.[0-9]+$') {
             Write-Error "[$timestamp] ERROR $script:ScriptName: Ansible $AnsibleVersion requires Python 3.11-13"
             throw

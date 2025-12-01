@@ -18,7 +18,7 @@ function assert_node_version_alias() {
   local timestamp=""
 
   # Refs: https://qiita.com/ko1nksm/items/3d1fd784611620b1bea5
-  if [[ ! $version =~ (stable|lts/[*]|lts/iron|lts/jod) ]] && [[ ! $version =~ ^[0-9]+(\.[0-9]+){0,2}$ ]]; then
+  if [[ ! $version =~ (stable|lts/[*]|lts/iron|lts/jod|lts/krypton) ]] && [[ ! $version =~ ^[0-9]+(\.[0-9]+){0,2}$ ]]; then
     timestamp=$(date "+%Y-%m-%d %H:%M:%S")
     echo "[$timestamp] ERROR $SCRIPT_NAME: Invalid version format: $version" >&2
     exit 1
@@ -32,7 +32,7 @@ function resolve_node_version() {
 
   if [ $alias = "stable" ]; then
     version=$(nvm ls-remote --no-colors | tail -n 1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
-  elif [[ $alias =~ (lts/[*]|lts/iron|lts/jod) ]] || [[ $alias =~ ^[0-9]+(\.[0-9]+){0,1}$ ]]; then
+  elif [[ $alias =~ (lts/[*]|lts/iron|lts/jod|lts/krypton) ]] || [[ $alias =~ ^[0-9]+(\.[0-9]+){0,1}$ ]]; then
     version=$(nvm ls-remote --no-colors "$alias" | tail -n 1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
   else
     version="$alias"

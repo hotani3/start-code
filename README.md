@@ -80,7 +80,7 @@ Ansibleでは`-v`に加え、次の対応表に従って、`--python`オプシ�
 ```
 
 JavaScriptでは、`-v`オプションはNode.js実行環境のバージョンです。  
-バージョン番号に加えて、`stable`（安定版最新）, `'lts/*'`（LTS版最新）, `lts/iron`（LTS20系最新）, `lts/jod`（LTS22系最新）といったエイリアス（別名）指定も可能です。
+バージョン番号に加えて、`stable`（安定版最新）, `'lts/*'`（LTS版最新）, `lts/iron`（LTS20系最新）, `lts/jod`（LTS22系最新）, `lts/krypton`（LTS24系最新）といったエイリアス（別名）指定も可能です。
 
 #### Python
 ```sh

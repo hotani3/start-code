@@ -80,7 +80,7 @@ Table 3: Correspondence between Ansible and Python versions
 ```
 
 In JavaScript, the `-v` option is the version of the Node.js runtime environment.  
-In addition to the version number, you can also specify aliases such as `stable` (latest stable version), `'lts/*'` (latest LTS version), `lts/iron` (latest of LTS 20 series), and `lts/jod` (latest of LTS 22 series).
+In addition to the version number, you can also specify aliases such as `stable` (latest stable version), `'lts/*'` (latest LTS version), `lts/iron` (latest of LTS 20 series), `lts/jod` (latest of LTS 22 series) and `lts/krypton` (latest of LTS 24 series).
 
 #### Python
 ```sh
