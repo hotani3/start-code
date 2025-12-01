@@ -49,8 +49,11 @@ Describe 'Test Functions.psm1' {
         It 'Should not throw for 2.18.x' {
             { Assert-AnsibleVersion -Version '2.18.1' } | Should Not Throw
         }
+        It 'Should not throw for 2.19.x' {
+            { Assert-AnsibleVersion -Version '2.19.0' } | Should Not Throw
+        }
         It 'Should throw for unsupported version' {
-            { Assert-AnsibleVersion -Version '2.19.0' } | Should Throw
+            { Assert-AnsibleVersion -Version '2.20.0' } | Should Throw
         }
     }
 
@@ -67,6 +70,13 @@ Describe 'Test Functions.psm1' {
         }
         It 'Should throw for Python <3.11' {
             { Assert-AnsibleAndPythonVersion -AnsibleVersion '2.18.3' -PythonVersion '3.10.5' } | Should Throw
+        }
+
+        It 'Should not throw for Python 3.13.x (Ansible 2.19)' {
+            { Assert-AnsibleAndPythonVersion -AnsibleVersion '2.19.1' -PythonVersion '3.13.0' } | Should Not Throw
+        }
+        It 'Should throw for Python <3.11 (Ansible 2.19)' {
+            { Assert-AnsibleAndPythonVersion -AnsibleVersion '2.19.1' -PythonVersion '3.10.9' } | Should Throw
         }
     }
 
