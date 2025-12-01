@@ -13,20 +13,20 @@ Describe 'Test Constants.psm1' {
     }
     
     Context 'Version constants' {
-        It 'defines ScriptVersion as 1.2.0' {
-            $ScriptVersion | Should Be '1.2.0'
+        It 'defines ScriptVersion as 1.2.1' {
+            $ScriptVersion | Should Be '1.2.1'
         }
-        It 'defines NvmVersion as 0.40.2' {
-            $NvmVersion | Should Be '0.40.2'
+        It 'defines NvmVersion as 0.40.3' {
+            $NvmVersion | Should Be '0.40.3'
         }
-        It 'defines DefaultNodeVersion as 22.15.0' {
-            $DefaultNodeVersion | Should Be '22.15.0'
+        It 'defines DefaultNodeVersion as 22.20.0' {
+            $DefaultNodeVersion | Should Be '22.20.0'
         }
-        It 'defines DefaultPythonVersion as 3.12.10' {
-            $DefaultPythonVersion | Should Be '3.12.10'
+        It 'defines DefaultPythonVersion as 3.12.12' {
+            $DefaultPythonVersion | Should Be '3.12.12'
         }
-        It 'defines DefaultAnsibleVersion as 2.17.11' {
-            $DefaultAnsibleVersion | Should Be '2.17.11'
+        It 'defines DefaultAnsibleVersion as 2.18.10' {
+            $DefaultAnsibleVersion | Should Be '2.18.10'
         }
     }
 
