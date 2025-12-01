@@ -11,24 +11,24 @@
 
 # バージョン情報
 Set-Variable -Name ScriptVersion `
-             -Value '1.2.0' `
+             -Value '1.2.1' `
              -Option ReadOnly
 
 Set-Variable -Name NvmVersion `
-             -Value '0.40.2' `
+             -Value '0.40.3' `
              -Option ReadOnly
 
 # デフォルトバージョン
 Set-Variable -Name DefaultNodeVersion `
-             -Value '22.15.0' `
+             -Value '22.20.0' `
              -Option ReadOnly
 
 Set-Variable -Name DefaultPythonVersion `
-             -Value '3.12.10' `
+             -Value '3.12.12' `
              -Option ReadOnly
 
 Set-Variable -Name DefaultAnsibleVersion `
-             -Value '2.17.11' `
+             -Value '2.18.10' `
              -Option ReadOnly
 
 # ホスト情報取得
