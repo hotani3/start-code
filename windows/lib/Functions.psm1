@@ -136,7 +136,7 @@ function Find-LatestOfMinorVersion {
     )
     $pattern = "$([Regex]::Escape($MinorVersion))\.[0-9]+"
     $latest = Invoke-Expression $VersionsCommand |
-              Select-String -Pattern $pattern |
+              Select-String -Pattern $pattern -AllMatches |
               ForEach-Object { $_.Matches } |
               Select-Object -Last 1 |
               ForEach-Object { $_.Value }
