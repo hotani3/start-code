@@ -5,14 +5,15 @@
 
 $scriptName = Split-Path -Leaf $PSCommandPath
 Set-Variable -Name ScriptName `
-             -Value $scriptName `
-             -Scope Script `
-             -Option ReadOnly
+    -Value $scriptName `
+    -Scope Script `
+    -Option ReadOnly
 
 # Windows のバージョンを取得
 try {
     $script:WindowsVersion = (Get-CimInstance Win32_OperatingSystem).Version
-} catch {
+}
+catch {
     Write-Error "Failed to retrieve Windows version: $_"
     throw
 }
@@ -55,17 +56,17 @@ function Resolve-NodeVersion {
 
     if ($Alias -eq 'stable') {
         $version = nvm ls-remote --no-colors |
-                   Select-String -Pattern '[0-9]+\.[0-9]+\.[0-9]+' |
-                   ForEach-Object { $_.Matches } |
-                   Select-Object -Last 1 |
-                   ForEach-Object { $_.Value }
+        Select-String -Pattern '[0-9]+\.[0-9]+\.[0-9]+' |
+        ForEach-Object { $_.Matches } |
+        Select-Object -Last 1 |
+        ForEach-Object { $_.Value }
     }
     elseif ($Alias -match '^(lts/\*|lts/iron|lts/jod|lts/krypton)$' -or $Alias -match '^[0-9]+(\.[0-9]+){0,1}$') {
         $version = nvm ls-remote --no-colors $Alias |
-                   Select-String -Pattern '[0-9]+\.[0-9]+\.[0-9]+' |
-                   ForEach-Object { $_.Matches } |
-                   Select-Object -Last 1 |
-                   ForEach-Object { $_.Value }
+        Select-String -Pattern '[0-9]+\.[0-9]+\.[0-9]+' |
+        ForEach-Object { $_.Matches } |
+        Select-Object -Last 1 |
+        ForEach-Object { $_.Value }
     }
     else {
         $version = $Alias
@@ -136,10 +137,10 @@ function Find-LatestOfMinorVersion {
     )
     $pattern = "$([Regex]::Escape($MinorVersion))\.[0-9]+"
     $latest = Invoke-Expression $VersionsCommand |
-              Select-String -Pattern $pattern -AllMatches |
-              ForEach-Object { $_.Matches } |
-              Select-Object -Last 1 |
-              ForEach-Object { $_.Value }
+    Select-String -Pattern $pattern -AllMatches |
+    ForEach-Object { $_.Matches } |
+    Select-Object -Last 1 |
+    ForEach-Object { $_.Value }
     Write-Output $latest
 }
 
@@ -193,6 +194,18 @@ function Install {
     }
 }
 
+function Switch-ExecutionPolicy {
+    [CmdletBinding()]
+    param()
+
+    $policy = Get-ExecutionPolicy -Scope CurrentUser
+    if ($policy -ne 'RemoteSigned') {
+        $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+        Write-Host "[$timestamp] INFO $script:ScriptName: Switching ExecutionPolicy to RemoteSigned..."
+        Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+    }
+}
+
 Export-ModuleMember -Function `
     Assert-VersionFormat, `
     Assert-NodeVersionAlias, `
@@ -202,4 +215,5 @@ Export-ModuleMember -Function `
     Execute, `
     Find-LatestOfMinorVersion, `
     Detect, `
-    Install
+    Install, `
+    Switch-ExecutionPolicy
