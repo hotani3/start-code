@@ -38,4 +38,17 @@ function Install-Git {
     }
 }
 
-Export-ModuleMember -Function Install-Scoop, Install-Git
+function Install-Nvm {
+    $packageTitle = 'nvm'
+    $detectCommand = 'nvm version *>&1'
+    $versionCommand = "nvm version *>&1 | Select-String -Pattern '(\d+\.\d+\.\d+)' | ForEach-Object { `$_.Matches.Groups[1].Value } | Select-Object -First 1"
+    $installCommand = 'scoop install nvm'
+
+    $result = Detect -PackageTitle $packageTitle -DetectCommand $detectCommand -VersionCommand $versionCommand
+    if ($result -ne 0) {
+        Install -PackageTitle $packageTitle -InstallCommand $installCommand
+        Detect -PackageTitle $packageTitle -DetectCommand $detectCommand -VersionCommand $versionCommand -ExitOnFail
+    }
+}
+
+Export-ModuleMember -Function Install-Scoop, Install-Git, Install-Nvm
