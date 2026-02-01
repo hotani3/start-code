@@ -41,14 +41,14 @@ jobs:
         shell: zsh {0}
         run: |
           ./macos/install/python-pipenv.sh -v 3.12.12
-      - name: Install Python 3.13.8
+      - name: Install Python 3.13.11
         shell: zsh {0}
         run: |
-          ./macos/install/python-pipenv.sh -v 3.13.8
-      - name: Install Python 3.14.0
+          ./macos/install/python-pipenv.sh -v 3.13.11
+      - name: Install Python 3.14.2
         shell: zsh {0}
         run: |
-          ./macos/install/python-pipenv.sh -v 3.14.0
+          ./macos/install/python-pipenv.sh -v 3.14.2
       - name: List all Python versions
         shell: zsh {0}
         run: |
@@ -63,10 +63,10 @@ jobs:
         run: |
           curl -sSL https://install.python-poetry.org | python3 - --uninstall
           unlink $HOME/.local/bin/poetry
-      - name: Install Poetry bound with Python 3.14.0
+      - name: Install Poetry bound with Python 3.14.2
         shell: zsh {0}
         run: |
-          ./macos/install/python-poetry.sh -v 3.14.0
+          ./macos/install/python-poetry.sh -v 3.14.2
 
   test-on-macos-sequoia-arm64:
     runs-on: macos-15
@@ -93,14 +93,14 @@ jobs:
         shell: zsh {0}
         run: |
           ./macos/install/python-pipenv.sh -v 3.12.12
-      - name: Install Python 3.13.8
+      - name: Install Python 3.13.11
         shell: zsh {0}
         run: |
-          ./macos/install/python-pipenv.sh -v 3.13.8
-      - name: Install Python 3.14.0
+          ./macos/install/python-pipenv.sh -v 3.13.11
+      - name: Install Python 3.14.2
         shell: zsh {0}
         run: |
-          ./macos/install/python-pipenv.sh -v 3.14.0
+          ./macos/install/python-pipenv.sh -v 3.14.2
       - name: List all Python versions
         shell: zsh {0}
         run: |
@@ -115,10 +115,10 @@ jobs:
         run: |
           curl -sSL https://install.python-poetry.org | python3 - --uninstall
           unlink $HOME/.local/bin/poetry
-      - name: Install Poetry bound with Python 3.14.0
+      - name: Install Poetry bound with Python 3.14.2
         shell: zsh {0}
         run: |
-          ./macos/install/python-poetry.sh -v 3.14.0
+          ./macos/install/python-poetry.sh -v 3.14.2
 
   test-on-macos-sequoia-x86_64:
     runs-on: macos-15-intel
@@ -145,14 +145,14 @@ jobs:
         shell: zsh {0}
         run: |
           ./macos/install/python-pipenv.sh -v 3.12.12
-      - name: Install Python 3.13.8
+      - name: Install Python 3.13.11
         shell: zsh {0}
         run: |
-          ./macos/install/python-pipenv.sh -v 3.13.8
-      - name: Install Python 3.14.0
+          ./macos/install/python-pipenv.sh -v 3.13.11
+      - name: Install Python 3.14.2
         shell: zsh {0}
         run: |
-          ./macos/install/python-pipenv.sh -v 3.14.0
+          ./macos/install/python-pipenv.sh -v 3.14.2
       - name: List all Python versions
         shell: zsh {0}
         run: |
@@ -167,10 +167,10 @@ jobs:
         run: |
           curl -sSL https://install.python-poetry.org | python3 - --uninstall
           unlink $HOME/.local/bin/poetry
-      - name: Install Poetry bound with Python 3.14.0
+      - name: Install Poetry bound with Python 3.14.2
         shell: zsh {0}
         run: |
-          ./macos/install/python-poetry.sh -v 3.14.0
+          ./macos/install/python-poetry.sh -v 3.14.2
 
   test-on-macos-tahoe-arm64:
     runs-on: macos-26
@@ -197,14 +197,14 @@ jobs:
         shell: zsh {0}
         run: |
           ./macos/install/python-pipenv.sh -v 3.12.12
-      - name: Install Python 3.13.8
+      - name: Install Python 3.13.11
         shell: zsh {0}
         run: |
-          ./macos/install/python-pipenv.sh -v 3.13.8
-      - name: Install Python 3.14.0
+          ./macos/install/python-pipenv.sh -v 3.13.11
+      - name: Install Python 3.14.2
         shell: zsh {0}
         run: |
-          ./macos/install/python-pipenv.sh -v 3.14.0
+          ./macos/install/python-pipenv.sh -v 3.14.2
       - name: List all Python versions
         shell: zsh {0}
         run: |
@@ -219,7 +219,7 @@ jobs:
         run: |
           curl -sSL https://install.python-poetry.org | python3 - --uninstall
           unlink $HOME/.local/bin/poetry
-      - name: Install Poetry bound with Python 3.14.0
+      - name: Install Poetry bound with Python 3.14.2
         shell: zsh {0}
         run: |
-          ./macos/install/python-poetry.sh -v 3.14.0
+          ./macos/install/python-poetry.sh -v 3.14.2
