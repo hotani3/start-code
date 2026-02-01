@@ -35,7 +35,7 @@ Here is English version of [README](./README_en.md).
 | :--- | :--- | :--- | :--- | :--- |
 | Ansible | venv | 2.17-19 | 2.18.10 | ansible-galaxy |
 | JavaScript | nvm | Node.js 20, 22, 24 | 22.20.0 | npm |
-| Python | pyenv | 3.9.1以上, 3.10-14 | 3.12.12 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
+| Python | pyenv | 3.10-14 | 3.12.12 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
 
 ## 実行方法
 まず最初に、macOSのターミナルを開き、本リポジトリをクローンします。
