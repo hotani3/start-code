@@ -71,10 +71,10 @@ jobs:
         shell: zsh {0}
         run: |
           ./macos/install/ansible.sh -v 2.18.10 --python 3.12.12
-      - name: Install Ansible 2.18.10 with Python 3.13.8
+      - name: Install Ansible 2.18.10 with Python 3.13.11
         shell: zsh {0}
         run: |
-          ./macos/install/ansible.sh -v 2.18.10 --python 3.13.8
+          ./macos/install/ansible.sh -v 2.18.10 --python 3.13.11
 
       # Ansible 2.19.3 against supported Python versions
       - name: Install Ansible 2.19.3 with Python 3.11.0
@@ -89,10 +89,10 @@ jobs:
         shell: zsh {0}
         run: |
           ./macos/install/ansible.sh -v 2.19.3 --python 3.12.12
-      - name: Install Ansible 2.19.3 with Python 3.13.8
+      - name: Install Ansible 2.19.3 with Python 3.13.11
         shell: zsh {0}
         run: |
-          ./macos/install/ansible.sh -v 2.19.3 --python 3.13.8
+          ./macos/install/ansible.sh -v 2.19.3 --python 3.13.11
 
       - name: List all Ansible versions
         shell: zsh {0}
@@ -154,10 +154,10 @@ jobs:
         shell: zsh {0}
         run: |
           ./macos/install/ansible.sh -v 2.18.10 --python 3.12.12
-      - name: Install Ansible 2.18.10 with Python 3.13.8
+      - name: Install Ansible 2.18.10 with Python 3.13.11
         shell: zsh {0}
         run: |
-          ./macos/install/ansible.sh -v 2.18.10 --python 3.13.8
+          ./macos/install/ansible.sh -v 2.18.10 --python 3.13.11
 
       # Ansible 2.19.3
       - name: Install Ansible 2.19.3 with Python 3.11.0
@@ -172,10 +172,10 @@ jobs:
         shell: zsh {0}
         run: |
           ./macos/install/ansible.sh -v 2.19.3 --python 3.12.12
-      - name: Install Ansible 2.19.3 with Python 3.13.8
+      - name: Install Ansible 2.19.3 with Python 3.13.11
         shell: zsh {0}
         run: |
-          ./macos/install/ansible.sh -v 2.19.3 --python 3.13.8
+          ./macos/install/ansible.sh -v 2.19.3 --python 3.13.11
 
       - name: List all Ansible versions
         shell: zsh {0}
@@ -237,10 +237,10 @@ jobs:
         shell: zsh {0}
         run: |
           ./macos/install/ansible.sh -v 2.18.10 --python 3.12.12
-      - name: Install Ansible 2.18.10 with Python 3.13.8
+      - name: Install Ansible 2.18.10 with Python 3.13.11
         shell: zsh {0}
         run: |
-          ./macos/install/ansible.sh -v 2.18.10 --python 3.13.8
+          ./macos/install/ansible.sh -v 2.18.10 --python 3.13.11
 
       # Ansible 2.19.3
       - name: Install Ansible 2.19.3 with Python 3.11.0
@@ -255,10 +255,10 @@ jobs:
         shell: zsh {0}
         run: |
           ./macos/install/ansible.sh -v 2.19.3 --python 3.12.12
-      - name: Install Ansible 2.19.3 with Python 3.13.8
+      - name: Install Ansible 2.19.3 with Python 3.13.11
         shell: zsh {0}
         run: |
-          ./macos/install/ansible.sh -v 2.19.3 --python 3.13.8
+          ./macos/install/ansible.sh -v 2.19.3 --python 3.13.11
 
       - name: List all Ansible versions
         shell: zsh {0}
@@ -320,10 +320,10 @@ jobs:
         shell: zsh {0}
         run: |
           ./macos/install/ansible.sh -v 2.18.10 --python 3.12.12
-      - name: Install Ansible 2.18.10 with Python 3.13.8
+      - name: Install Ansible 2.18.10 with Python 3.13.11
         shell: zsh {0}
         run: |
-          ./macos/install/ansible.sh -v 2.18.10 --python 3.13.8
+          ./macos/install/ansible.sh -v 2.18.10 --python 3.13.11
 
       # Ansible 2.19.3
       - name: Install Ansible 2.19.3 with Python 3.11.0
@@ -338,10 +338,10 @@ jobs:
         shell: zsh {0}
         run: |
           ./macos/install/ansible.sh -v 2.19.3 --python 3.12.12
-      - name: Install Ansible 2.19.3 with Python 3.13.8
+      - name: Install Ansible 2.19.3 with Python 3.13.11
         shell: zsh {0}
         run: |
-          ./macos/install/ansible.sh -v 2.19.3 --python 3.13.8
+          ./macos/install/ansible.sh -v 2.19.3 --python 3.13.11
 
       - name: List all Ansible versions
         shell: zsh {0}

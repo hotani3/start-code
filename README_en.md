@@ -35,7 +35,7 @@ Table 2: Target Programming Languages
 | :--- | :--- | :--- | :--- | :--- |
 | Ansible | venv | 2.17-19 | 2.18.10 | ansible-galaxy |
 | Javascript | nvm | Node.js 20, 22, 24 | 22.20.0 | npm |
-| Python | pyenv | 3.9.1 or higher, 3.10-14 | 3.12.12 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
+| Python | pyenv | 3.10-14 | 3.12.12 | <ul><li>venv+pip</li><li>Pipenv</li><li>Poetry</li></ul> |
 
 ## How to Execute
 First, open the macOS terminal and clone this repository.
@@ -45,7 +45,7 @@ git clone https://github.com/hotani3/start-code.git
 
 If the git command is not installed, download the ZIP file from [Releases](https://github.com/hotani3/start-code/releases) and extract it.
 ```sh
-unzip start-code-1.2.1.zip && mv start-code-1.2.1 start-code
+unzip start-code-1.2.2.zip && mv start-code-1.2.2 start-code
 ```
 
 Next, move to the directory that was cloned or extracted from the ZIP.
