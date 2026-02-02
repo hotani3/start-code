@@ -45,7 +45,7 @@ git clone https://github.com/hotani3/start-code.git
 
 まだgitコマンドがインストール済みでないときは、[Releases](https://github.com/hotani3/start-code/releases)からZIPファイルをダウンロードし、展開します。
 ```sh
-unzip start-code-1.2.1.zip && mv start-code-1.2.1 start-code
+unzip start-code-1.2.2.zip && mv start-code-1.2.2 start-code
 ```
 
 次に、クローンまたはZIP展開したディレクトリに移動します。
