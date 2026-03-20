@@ -7,7 +7,7 @@ on:
   push:
     branches-ignore:
       - main
-      - *-on-windows
+      - '*-on-windows'
   schedule:
     - cron: '40 10 * * *'
   workflow_dispatch:
