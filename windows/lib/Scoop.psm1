@@ -11,6 +11,15 @@ Set-Variable -Name ScriptName `
 Import-Module $PSScriptRoot\Constants.psm1
 Import-Module $PSScriptRoot\Functions.psm1
 
+function Get-ScoopVersion {
+    $scoopVersionOutput = scoop --version *>&1
+    $outputString = $scoopVersionOutput -join "`n"
+    $versionMatch = [regex]::Match($outputString, 'v?(\d+\.\d+\.\d+)')
+    if ($versionMatch.Success) {
+        return $versionMatch.Groups[1].Value
+    }
+}
+
 function Install-Scoop {
     $packageTitle = 'Scoop'
     $detectCommand = 'scoop --version *>&1'
@@ -51,4 +60,4 @@ function Install-Nvm {
     }
 }
 
-Export-ModuleMember -Function Install-Scoop, Install-Git, Install-Nvm
+Export-ModuleMember -Function Get-ScoopVersion, Install-Scoop, Install-Git, Install-Nvm
